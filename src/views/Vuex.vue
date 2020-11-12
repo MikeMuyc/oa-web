@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-    import { $user } from '@/stores/user';
+    import { $user } from '@oa/stores/user';
     import { Component, Vue } from 'vue-property-decorator';
 
     @Component({})

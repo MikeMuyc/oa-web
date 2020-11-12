@@ -1,7 +1,7 @@
 <template>
 	<div class="header_bar colorful">
 		<img
-			src="@/assets/logo@2x.png"
+			src="@oa/assets/logo@2x.png"
 			alt=""
 			style="margin-right: 5px; margin-top: 7px"
 		/>

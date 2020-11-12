@@ -1,17 +1,17 @@
 <template>
-    <div id="app" :data-theme= 'nowThemeInfo'>
-        <router-view />
+    <div id="app" :data-theme='nowThemeInfo'>
+        <router-view/>
     </div>
 </template>
 <script lang="ts">
-import {  Component,Vue } from 'vue-property-decorator';
-import { theme } from '@/stores/Theme';
+    import {Component, Vue} from 'vue-property-decorator';
+    import {theme} from '@oa/stores/Theme';
 
-@Component
-export default class App extends Vue{
-    get nowThemeInfo(){
-        return theme.nowThemeInfo
+    @Component
+    export default class App extends Vue {
+        get nowThemeInfo() {
+            return theme.nowThemeInfo
+        }
     }
-}
 </script>
 

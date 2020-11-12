@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { theme } from '@/stores/Theme';
+import { theme } from '@oa/stores/Theme';
 @Component
 export default class Home extends Vue {
     get themes() {

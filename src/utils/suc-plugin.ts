@@ -1,6 +1,6 @@
 
-import ECharts from '@/components/ECharts.vue';
-
+import ECharts from '@oa/components/ECharts.vue';
+import VuePerfectScrollbar from '@oa/plugins/perfect-scrollbar/scroll.vue';
 //通用方法集合
 const utils = {
     //时间戳转换成自定义字符串
@@ -70,7 +70,7 @@ export default {
 
         //echarts的vue组件
         Vue.component('v-chart', ECharts);
-
+        Vue.component('vue-perfect-scrollbar', VuePerfectScrollbar);
         //将方法集添加到Vue实例上面去
         Vue.prototype.$utils = utils;
 
