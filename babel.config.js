@@ -3,22 +3,7 @@ module.exports = {
         "@vue/cli-plugin-babel/preset"
     ],
     "plugins": [
-        [
-            "import",
-            {
-                "libraryName": "view-design",
-                "libraryDirectory": "src/components"
-            },
-            "view-design"
-        ],
-        [
-            "import",
-            {
-                "libraryName": "iview",
-                "libraryDirectory": "src/components"
-            },
-            "iview"
-        ],
+        
         [
             "component",
             {

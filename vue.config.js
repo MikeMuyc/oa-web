@@ -14,6 +14,13 @@ function resolve(dir) {
 module.exports = {
     // lintOnSave: true,
     publicPath: "./",
+    css: {
+        loaderOptions: {
+            sass: {
+                additionalData: '@import "@/styles/variables.scss";'
+            }
+        }
+    },
     transpileDependencies: [
         /authox-vue/gi,
         /monch/gi,

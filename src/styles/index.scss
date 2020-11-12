@@ -1,3 +1,7 @@
+@import "variables";
+@import "theme-icon";
+@import "theme";
+
 html,
 body {
     height: 100%;
@@ -10,9 +14,24 @@ body {
 }
 
 .header_bar {
-    height: 50px;
+    height: 56px;
     background: #247ad6;
+    display:flex;
+    align-items: center;
+    padding:0 20px;
+    // background: url('../assets/header/headerbg.png') no-repeat !important;
+    width:100%;
 
+    .title{
+
+        font-size: 20px;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        line-height: 25px;
+        color: #333333;
+        flex:1;
+
+    }
     .suc-menu {
         height: 100%;
         > ul {
@@ -25,9 +44,10 @@ body {
 }
 
 .app_main {
-    background-color: white;
+    width:100%;
     height: calc(100% - 50px);
-
+    background-image: url('../assets/content/contentbg.png') no-repeat !important;
+    background-color: #EDEEEF;
     .ol-mouse-position {
         bottom: 8px;
         top: auto;
