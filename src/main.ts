@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import './styles/index.scss';
 import App from './App.vue'
 import router from './router'
 import store from './stores'
@@ -12,9 +13,16 @@ import { utils } from "@suc/ui/index";
 import authox from '@suc/authox/plugins/authox-vue';
 import VueOl from '@suc/monch';
 
+import './assets/iconfonts/iconfont.css'
+
 import './styles/index.scss';
 import '@suc/authox/styles/authox.scss';
+import ViewUI from 'view-design'
+import "iview/dist/styles/iview.css";
 import 'view-design/dist/styles/iview.css';
+import {Menu,Icon} from 'view-design';
+
+Vue.use(ViewUI);
 
 if (process.env.NODE_ENV === 'development') {
     //开发环境 do something
