@@ -44,12 +44,134 @@ body {
 }
 
 .app_main {
+    padding-top:30px;
     width:100%;
     height: calc(100% - 50px);
-    background-image: url('../assets/content/contentbg.png') no-repeat !important;
-    background-color: #EDEEEF;
+    background-image: url('../assets/content/contentbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     .ol-mouse-position {
         bottom: 8px;
         top: auto;
     }
+    .ivu-layout-sider{
+        background:none;
+    }
+    // .ivu-menu{
+    //     width:267px;
+    // }
+
+    // .ivu-menu-item {
+    //     width:267px;
+    // }
+    .ivu-menu-light{
+        background:none;
+    }
+    .ivu-menu-vertical.ivu-menu-light:after{
+        content:none;
+    }
+    .ivu-layout{
+        background:none;
+    }
+    .workplace{
+        width:100%;
+        min-height:700px;
+        background-image: url('../assets/section/workplacebg.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding:32px;
+
+        .section{
+            flex:1;
+            margin:20px;
+            min-height:350px;
+            // &:nth-child(2n){
+            //     border-left:1px solid #eee;
+            // }
+        }
+        .section-title{
+            // width:526px;
+            height:56px;
+            font-family: Source Han Sans CN;
+            font-weight: 400;
+            line-height: 56px;
+            font-size:16px;
+            background-image: url('../assets/section/titlebg.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            padding:0 16px 0 48px;
+            display:flex;
+            justify-content: space-between;
+            span:nth-child(1){
+                font-size: 20px;
+                color: #890A03;
+                &+span{
+                    font-weight:600;
+                }
+            }
+        }
+    }
+}
+$flex-jc:( start:flex-start, end:flex-end, center:center, between:space-between, around:space-around, );
+$flex-ai:( start:flex-start, end:flex-end, center:center, stretch:stretch);
+$colors:( primary:rgb(70, 129, 255), "white":#fff);
+//color
+@each $colorKey,
+$color in $colors {
+    .text-#{$colorKey} {
+        color: $color
+    }
+    .bg-#{$colorKey} {
+        background-color: $color
+    }
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+}
+
+//flex
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+@each $key,
+$value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+
+@each $key,
+$value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.ai-baseline {
+    align-items: baseline;
 }

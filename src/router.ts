@@ -23,10 +23,10 @@ export default new Router({
             path: '/main',
             component: () => import('./layout/Main.vue'),
             children: [
-                // {
-                //     path: '',
-                //     redirect: '',
-                // },
+                {
+                    path: '',
+                    redirect: 'workplace-index',
+                },
                 // {
                 //     path: '',
                 //     meta: {
@@ -64,11 +64,11 @@ export default new Router({
                     // ]
                 // },
                 {
-                    path: 'map',
+                    path: 'workplace-index',
                     meta: {
-                        name: 'map'
+                        name: 'OA工作台'
                     },
-                    component: () => import('./views/Map.vue'),
+                    component: () => import('./views/workplace/Main.vue'),
                 },
                 {
                     path: 'echarts',

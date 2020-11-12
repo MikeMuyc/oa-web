@@ -12,8 +12,9 @@
     import axios from "axios";
     import store from "@/stores";
     import { theme } from '@/stores/Theme';
+    import {NavSider} from './components'
     @Component({
-        components: {TopBar, AppMain}
+        components: {TopBar, AppMain,NavSider}
     })
     export default class mainView extends Vue {
 
