@@ -10,8 +10,8 @@
     import { TopBar, AppMain } from "./components";
     import { Route } from "vue-router";
     import axios from "axios";
-    import store from "@/stores";
-    import { theme } from '@/stores/Theme';
+    import store from "../../stores";
+    import { theme } from '../../stores/Theme';
     import {NavSider} from './components'
     @Component({
         components: {TopBar, AppMain,NavSider}

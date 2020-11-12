@@ -1,12 +1,8 @@
 @import "variables";
 @import "theme-icon";
 @import "theme";
+@import "base";
 
-html,
-body {
-    height: 100%;
-    font-family: Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Microsoft YaHei";
-}
 
 .main_view {
     height: 100%;
@@ -46,7 +42,7 @@ body {
 .app_main {
     padding-top:30px;
     width:100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 56px);
     background-image: url('../assets/content/contentbg.png');
     background-repeat: no-repeat;
     background-size: cover;

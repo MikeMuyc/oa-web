@@ -1,18 +1,4 @@
-// import ECharts from 'vue-echarts';
-// import 'echarts/lib/chart/bar'
-// import 'echarts/lib/chart/line'
-// import 'echarts/lib/chart/pie'
-// import 'echarts/lib/chart/map'
-// import 'echarts/lib/chart/radar'
-// import 'echarts/lib/chart/scatter'
-// import 'echarts/lib/chart/effectScatter'
-// import 'echarts/lib/component/tooltip'
-// import 'echarts/lib/component/polar'
-// import 'echarts/lib/component/geo'
-// import 'echarts/lib/component/legend'
-// import 'echarts/lib/component/title'
-// import 'echarts/lib/component/visualMap'
-// import 'echarts/lib/component/dataset'
+
 import ECharts from '@/components/ECharts.vue';
 
 //通用方法集合
@@ -38,25 +24,9 @@ const utils = {
         }
         return fmt;
     },
+
     deepCopy: (obj: any) => {
-        let result = Array.isArray(obj) ? [] : {};
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                if(obj[key]) {
-                    if (typeof obj[key] === 'object') {
-                        // @ts-ignore
-                        result[key] = utils.deepCopy(obj[key]); //递归复制
-                    } else {
-                        // @ts-ignore
-                        result[key] = obj[key];
-                    }
-                }else{
-                    // @ts-ignore
-                    result[key] = obj[key];
-                }
-            }
-        }
-        return result;
+        return JSON.parse(JSON.stringify(obj));
     }
 }
 
@@ -108,5 +78,36 @@ export default {
         Vue.prototype.$getMapConfig = function (common?: any) {
             return new Map(common);
         }
+
+        //点击该元素以外的部分触发的事件
+        Vue.directive('clickoutside', {
+            bind: function (
+                el: {
+                    contains: (arg0: any) => void;
+                    _vueClickOutside_: (e: any) => false | undefined;
+                },
+                binding: {
+                    expression: any;
+                    value: (arg0: any) => void;
+                }) {
+                function documentHandler(e: { target: any; }) {
+                    // @ts-ignore
+                    if (el.contains(e.target)) {
+                        return false;
+                    }
+                    if (binding.expression) {
+                        binding.value(e)
+                    }
+                }
+
+                // @ts-ignore
+                el._vueClickOutside_ = documentHandler;
+                document.addEventListener('click', documentHandler);
+            },
+            unbind: function (el: { _vueClickOutside_: (this: Document, ev: MouseEvent) => any; }) {
+                document.removeEventListener('click', el._vueClickOutside_);
+                delete el._vueClickOutside_;
+            }
+        });
     }
 }

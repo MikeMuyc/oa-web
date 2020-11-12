@@ -1,6 +1,6 @@
 <template>
     <div class="app_main" >
-        <Layout :style="{ minHeight: '100vh', flexDirection: 'row' }">
+        <Layout :style="{ height: '100%', flexDirection: 'row' }">
             <NavSider />
             <Layout :style="{overflow: 'hidden'}">
                 <Content>

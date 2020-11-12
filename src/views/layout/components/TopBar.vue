@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Vue, Component, Watch } from "vue-property-decorator";
 import { SucIcon, SucMenu, SucMenuItem, SucSubmenu } from "@suc/ui";
-import { theme } from "@/stores/Theme";
+import { theme } from "../../../stores/Theme";
 
 @Component({
 	components: {
