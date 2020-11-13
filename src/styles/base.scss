@@ -1,5 +1,4 @@
-$theme-color:#3a7ef3;
-$third-font-color:#a0a5a9;
+
 * {
     outline: 0;
     padding: 0;
@@ -17,7 +16,7 @@ html, body {
     overflow-x: auto;
     //overflow-y: hidden;
     font-size: 14px;
-    color: #30374a;
+    color: #333;
 }
 
 ul,ol,li {
@@ -47,14 +46,14 @@ img{
     display: inline-block;
 }
 textarea{
-    resize: none;
+    resize: none !important;
     -webkit-appearance: none;
     padding: 5px 10px;
     border: 1px solid #dde4eb;
     min-height: 74px;
     border-radius: 4px;
     &:focus{
-        border-color: $theme-color;
+        @include border-color();
         box-shadow: 0px 0px 3px 0px rgba(58, 126, 243, 0.6);
     }
     &:disabled{

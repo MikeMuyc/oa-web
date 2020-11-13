@@ -20,10 +20,10 @@ export default new Router({
             children: [
                 {
                     path: '',
-                    redirect: 'workplace-index',
+                    redirect: 'workplaceIndex',
                 },
                 {
-                    path: 'workplace-index',
+                    path: 'workplaceIndex',
                     name: 'OA工作台',
 
                     component: () => import('../views/workplace/Main.vue'),
@@ -35,6 +35,10 @@ export default new Router({
                     component: () => import('../views/workplace/template.vue'),
                 },
             ]
-        }
+        },
+        {
+            path: '/Home',
+            component: () => import('../views/Home.vue'),
+        },
     ]
 });

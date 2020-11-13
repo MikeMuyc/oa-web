@@ -1,5 +1,5 @@
 <template>
-	<div class="header_bar colorful">
+	<div class="header_bar ">
 		<img
 			src="@oa/assets/logo@2x.png"
 			alt=""
@@ -59,11 +59,6 @@ export default class topBar extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-::v-deep .ivu-menu-item-active {
-	opacity: 0.7;
-}
-.colorful {
-	@include base-background();
-	@include base-border();
-}
+
+
 </style>

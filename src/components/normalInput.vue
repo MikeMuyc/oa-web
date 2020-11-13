@@ -175,7 +175,7 @@
             padding: 0 10px;
             transition: .3s;
             &:focus,&:hover{
-                border-color: $theme-color;
+                @include border-color();
                 box-shadow: 0px 0px 3px 0px rgba(58, 126, 243, 0.6);
             }
             &:disabled{

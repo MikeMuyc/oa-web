@@ -23,15 +23,15 @@
                     </div>
                     <div class="aline">
                         <div class="item" style="color: #7c8185;">次级文字</div>
-                        <div class="item" style="color: #7c8185;">$second-font-color</div>
+                        <div class="item" style="color: #595959;">$second-font-color</div>
                     </div>
                     <div class="aline">
                         <div class="item" style="color: #a0a5a9;">辅助文字</div>
-                        <div class="item" style="color: #a0a5a9;">$third-font-color</div>
+                        <div class="item" style="color: #8C8C8C;">$third-font-color</div>
                     </div>
                     <div class="aline">
-                        <div class="item tipsText">提示文字</div>
-                        <div class="item tipsText">.tipsText</div>
+                        <div class="item" style="color: #BFBFBF;">提示文字</div>
+                        <div class="item" style="color: #BFBFBF;">$tips-color</div>
                     </div>
                 </div>
             </div>
@@ -44,8 +44,7 @@
                 </div>
                 <div class="right">
                     <div class="aline">
-                        <div class="colorBox normal">主题色<br/>$theme-color</div>
-                        <div class="colorBox background">背景修饰<br/>background-image</div>
+                        <div class="colorBox normal">主题色<br/>#2064CF</div>
                     </div>
                     <div class="aline">
                         <div class="colorBox success">成功<br/>$success-color</div>
@@ -66,7 +65,7 @@
                     <div class="aline">
                         <div class="item">
                             <div class="pmbtn primary">
-                                <i class="iconfont iconsousuo1"></i>搜索
+                                <i class="iconfont iconsousuo"></i>搜索
                             </div>
                         </div>
                         <div class="item btn">确认；搜索；下一步...</div>
@@ -88,6 +87,12 @@
                             <div class="pmbtn primary disable">打开</div>
                         </div>
                         <div class="item btn">禁用；无效</div>
+                    </div>
+                    <div class="aline">
+                        <div class="item">
+                            <div class="pmbtn delete">删除</div>
+                        </div>
+                        <div class="item btn">删除</div>
                     </div>
                 </div>
             </div>
@@ -379,7 +384,7 @@
                             <div class="pmbtn primary" @click="openMessage">提示信息</div>
                         </div>
                         <div class="item btn btn">
-                            提示信息，使用element-ui
+                            提示信息，使用element-ui，this.$message.info(`这里是提示`)
                         </div>
                     </div>
                 </div>
@@ -756,13 +761,21 @@
 
             });
         }
+
+        changeTheme(name:string){
+            document.getElementsByTagName('body')[0].style.setProperty('--color','#27C992');
+        }
+
+        mounted(): void {
+
+        }
+
     }
 
 
 </script>
 
 <style lang="scss" scoped>
-    @import "../../styles/variables";
 
 
     #orderList {
@@ -791,7 +804,7 @@
                     }
 
                     .num, .text {
-                        color: $theme-color;
+                        @include base-color();
                         font-size: 32px;
                         line-height: 1;
                     }
@@ -816,7 +829,7 @@
                         margin-bottom: 10px;
 
                         &.normal {
-                            background-color: $theme-color;
+                            @include base-background();
                         }
 
                         &.background {
@@ -854,109 +867,6 @@
         }
     }
 
-    .pmbtn{
-        height: 36px;
-        min-width: 70px;
-        background-color: #fff;
-        border-radius: 4px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 16px;
-        color: $theme-color;
-        border: solid 1px $theme-color;
-        cursor: pointer;
-        user-select: none;
-        transition: all .3s;
-        position: relative;
-        flex:none;
-        .iconfont{
-            font-size: 14px;
-            margin-right: 4px;
-            line-height: 1;
-            color: $theme-color;
-        }
-        &:hover{
-            background-color: #DCE9FF;
-        }
-        &:active{
-            box-shadow: 0 2px 5px #a0cedb inset;
-        }
 
-        &.primary{
-            background-color: $theme-color;
-            color: #fff;
-            .iconfont{
-                color: #fff;
-            }
-            &:hover{
-                background-color: #195dd2;
-            }
-            &:active{
-                box-shadow: 0 2px 5px #454e77 inset;
-            }
-        }
-        &.disable{
-            border-color: #c6c9ce;
-            color: #a0a5a9;
-            cursor: not-allowed;
-            .iconfont{
-                color: #a0a5a9;
-            }
-            &:hover{
-                background-color: #fff;
-            }
-            &:active{
-                box-shadow: none;
-            }
-        }
-        &.disable.primary{
-            cursor: not-allowed;
-            border-color: #a0a5a9;
-            background-color: #a0a5a9;
-            color: #fff;
-            .iconfont{
-                color: #fff;
-            }
-            &:hover{
-                background-color: #a0a5a9;
-            }
-            &:active{
-                box-shadow: none;
-            }
-        }
-
-
-        .btnSelection{
-            position: absolute;
-            left: 0;
-            top: 40px;
-            width: 100%;
-            padding: 5px 0;
-            background-color: #ffffff;
-            box-shadow: 0px 1px 4px 0px
-            rgba(183, 183, 183, 0.6);
-            border-radius: 4px;
-            z-index: 2;
-            transition: all .2s;
-            transform-origin: center top 0;
-            transform: rotateX(-90deg);
-            &.active{
-                transform: rotateX(0deg);
-            }
-            .selItem{
-                color: $font-color;
-                width: 100%;
-                height: 36px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-
-                &:hover{
-                    background-color: #e5f0ff;
-                }
-            }
-        }
-    }
 </style>
 

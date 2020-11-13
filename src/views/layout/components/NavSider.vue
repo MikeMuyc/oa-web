@@ -5,7 +5,7 @@
                 <span class="iconfont iconshouye-xuanzhong" style="font-size:20px;margin-right:10px"></span>
                 <span>OA工作台</span>
             </MenuItem>
-            <MenuItem name="1-2" to="/main/workplace-index">
+            <MenuItem name="1-2" to="/main/workplaceIndex">
                 <span class="iconfont icongongzuoshenpi" style="font-size:20px;margin-right:10px"></span>
                 <span>工作审批</span>
             </MenuItem>

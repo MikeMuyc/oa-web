@@ -1,6 +1,4 @@
 @import "variables";
-@import "theme-icon";
-@import "theme";
 @import "base";
 
 
@@ -11,11 +9,14 @@
 
 .header_bar {
     height: 56px;
-    background: #247ad6;
+    background-image: url('../assets/header/headerbg1.png') ;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-size: 100% 100%;
     display:flex;
     align-items: center;
     padding:0 20px;
-    // background: url('../assets/header/headerbg.png') no-repeat !important;
+
     width:100%;
 
     .title{
@@ -170,4 +171,95 @@ $value in $flex-ai {
 
 .ai-baseline {
     align-items: baseline;
+}
+
+//通用按钮样式
+.pmbtn{
+    height: 32px;
+    min-width: 72px;
+    background-color: #fff;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border: 1px solid $border-color;
+    //border: solid 1px $theme-color;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s;
+    position: relative;
+    flex:none;
+    .iconfont{
+        font-size: 14px;
+        margin-right: 4px;
+        line-height: 1;
+        @include base-color();
+    }
+    &:hover:not(.disable,.primary){
+        @include base-color();
+    }
+    &:active:not(.disable,.primary){
+        @include border-color();
+    }
+
+    &.primary{
+        @include base-background();
+        @include border-box();
+        color: #fff;
+        .iconfont{
+            color: #fff;
+        }
+        &:hover{
+            color: #fff;
+        }
+        &:active{
+            box-shadow: 0 2px 5px #454e77 inset;
+        }
+    }
+
+    &.disable{
+        border-color: #c6c9ce;
+        color: #a0a5a9;
+        cursor: not-allowed;
+        .iconfont{
+            color: #a0a5a9;
+        }
+        &:hover{
+
+        }
+        &:active{
+            box-shadow: none;
+        }
+    }
+    &.disable.primary{
+        cursor: not-allowed;
+        border-color: #a0a5a9;
+        background-color: #a0a5a9;
+        color: #fff;
+        .iconfont{
+            color: #fff;
+        }
+        &:hover{
+
+        }
+        &:active{
+            box-shadow: none;
+        }
+    }
+
+    &.delete{
+        background-color: $error-color;
+        border: 1px solid $error-color;
+        color: #fff;
+        .iconfont{
+            color: #fff;
+        }
+        &:hover{
+            color: #fff;
+        }
+        &:active{
+            box-shadow: 0 2px 5px #D24C48 inset;
+        }
+    }
 }

@@ -43,5 +43,41 @@
 </script>
 
 <style lang="scss" scoped>
+    .workplace{
+        width:100%;
+        min-height:700px;
+        background-image: url('../../assets/section/workplacebg.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding:32px;
 
+        .section{
+            flex:1;
+            margin:20px;
+            min-height:350px;
+            // &:nth-child(2n){
+            //     border-left:1px solid #eee;
+            // }
+        }
+        .section-title{
+            // width:526px;
+            height:56px;
+            font-weight: 400;
+            line-height: 56px;
+            font-size:16px;
+            background-image: url('../../assets/section/titlebg.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            padding:0 16px 0 48px;
+            display:flex;
+            justify-content: space-between;
+            span:nth-child(1){
+                font-size: 20px;
+                color: #890A03;
+                &+span{
+                    font-weight:600;
+                }
+            }
+        }
+    }
 </style>
