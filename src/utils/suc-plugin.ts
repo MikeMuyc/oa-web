@@ -71,6 +71,7 @@ export default {
         //echarts的vue组件
         Vue.component('v-chart', ECharts);
         Vue.component('vue-perfect-scrollbar', VuePerfectScrollbar);
+
         //将方法集添加到Vue实例上面去
         Vue.prototype.$utils = utils;
 

@@ -13,11 +13,6 @@ export default new Router({
             path: '/login',
             component: () => import('../views/Login.vue'),
         },
-        {
-            path: '/home',
-            component: () => import('../views/Home.vue'),
-        },
-
 
         { //懒加载
             path: '/main',
@@ -27,15 +22,18 @@ export default new Router({
                     path: '',
                     redirect: 'workplace-index',
                 },
-
                 {
                     path: 'workplace-index',
-                    meta: {
-                        name: 'OA工作台'
-                    },
+                    name: 'OA工作台',
+
                     component: () => import('../views/workplace/Main.vue'),
                 },
+                {
+                    path: 'template',
+                    name: '标准页',
 
+                    component: () => import('../views/workplace/template.vue'),
+                },
             ]
         }
     ]

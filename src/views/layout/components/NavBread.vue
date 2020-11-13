@@ -9,19 +9,27 @@ import { Vue, Component, Watch } from "vue-property-decorator";
 
 @Component
 export default class NavBread extends Vue {
-    title = "首页";
+    title:string = '';
 
     @Watch("$route")
     private handleRouteChange(): void {
-        this.title = this.$route.meta.name;
+        this.title = this.$route.name;
+    }
+
+    mounted(): void {
+        this.title = this.$route.name;
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .ivu-breadcrumb{
         padding-left:20px;
         background-color: #F4F4F5;
-        height:61px;
-        line-height:61px;
+        height:60px;
+        line-height:60px;
+
+    }
+    .ivu-breadcrumb-item-link{
+        font-size: 18px;
     }
 </style>
