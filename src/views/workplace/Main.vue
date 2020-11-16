@@ -78,11 +78,15 @@
    
     .workplace{
         width:100%;
-        height:calc(100% - 40px);
+        height:calc(100%);
         background-image: url('../../assets/section/workplacebg.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         margin-right:52px;
+
+        div.box{
+            height:calc(100% / 2);
+        }
         div:nth-child(1){
             
             .section:nth-child(1){
@@ -99,8 +103,7 @@
             flex-shrink:0;
             flex-wrap: wrap;
             padding:20px 32px;
-            height:370px;
-         
+            height:100%;
             &:nth-child(2n){
                 border-left:2px solid #eee;
             }

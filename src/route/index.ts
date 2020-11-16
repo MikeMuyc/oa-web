@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import notice from './notice'
+import notice from './notice';
+import addressbook from './addressbook';
 Vue.use(Router);
 
 export default new Router({
@@ -35,13 +36,7 @@ export default new Router({
 
                     component: () => import('../views/template.vue'),
                 },
-                {
-                    path: 'addressbook-index',
-                    meta: {
-                        name: '通讯录'
-                    },
-                    component: () => import('../views/addressbook/Main.vue'),
-                },
+                ...addressbook,
                 ...notice,
 
             ]

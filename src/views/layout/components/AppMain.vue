@@ -4,6 +4,16 @@
         <div class="main-content ">
             <NavBread>
                 <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'">新增公告</div>
+                <div slot="rightSide"  v-if="routeName === '通讯录'">
+                    <div class="pmbtn primary" style="margin-right:10px">
+                        <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
+                        新增人员信息
+                    </div>
+                    <div class="pmbtn primary">
+                        <span class="iconfont iconshuaxin" style="margin-right:5px"></span>
+                        机构信息更新
+                    </div>
+                </div>
             </NavBread>
             <vue-perfect-scrollbar class="routerView">
                 <router-view class=""></router-view>
@@ -67,7 +77,7 @@
         .routerView{
             height: calc(100% - 60px);
             background-color: #fff;
-            padding-right: 15px;
+            // padding-right: 15px;
         }
     }
 </style>
