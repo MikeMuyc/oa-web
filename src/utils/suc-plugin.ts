@@ -2,6 +2,7 @@
 import ECharts from '@oa/components/ECharts.vue';
 import VuePerfectScrollbar from '@oa/plugins/perfect-scrollbar/scroll.vue';
 import mixSelect from '@oa/components/mixSelect/mixSelect.vue';
+import NavBread from '@oa/components/NavBread.vue';
 //通用方法集合
 const utils = {
     //时间戳转换成自定义字符串
@@ -69,10 +70,12 @@ export default {
         //时间转换过滤器
         Vue.filter('dateFormat', utils.dateFormat);
 
-        //echarts的vue组件
+        //定义全局vue组件
         Vue.component('v-chart', ECharts);
         Vue.component('vue-perfect-scrollbar', VuePerfectScrollbar);
         Vue.component('mixSelect', mixSelect);
+        Vue.component('NavBread', NavBread);
+
         //将方法集添加到Vue实例上面去
         Vue.prototype.$utils = utils;
 

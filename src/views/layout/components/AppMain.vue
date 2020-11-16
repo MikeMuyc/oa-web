@@ -2,7 +2,9 @@
     <div class="app_main">
         <NavSider/>
         <div class="main-content ">
-            <NavBread/>
+            <NavBread>
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'">新增公告</div>
+            </NavBread>
             <vue-perfect-scrollbar class="routerView">
                 <router-view class=""></router-view>
             </vue-perfect-scrollbar>
@@ -12,12 +14,17 @@
 </template>
 
 <script lang="ts">
-    import {Vue, Component} from "vue-property-decorator";
+    import {Vue, Component, Watch} from "vue-property-decorator";
     import NavSider from './NavSider.vue'
-    import NavBread from './NavBread.vue';
 
-    @Component({components: {NavSider, NavBread}})
+
+    @Component({components: {NavSider}})
     export default class appMain extends Vue {
+        routeName:string = this.$route.name;
+        @Watch("$route")
+        private handleRouteChange(): void {
+            this.routeName = this.$route.name;
+        }
     }
 </script>
 <style lang="scss" >

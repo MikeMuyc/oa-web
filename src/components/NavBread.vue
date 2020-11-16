@@ -1,7 +1,10 @@
 <template>
-    <Breadcrumb>
-        <BreadcrumbItem>{{ title }}</BreadcrumbItem>
-    </Breadcrumb>
+    <div class="routeBar">
+        <div class="left">{{ title }}</div>
+        <div class="right">
+            <slot name="rightSide"></slot>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -21,15 +24,18 @@ export default class NavBread extends Vue {
     }
 }
 </script>
-<style lang="scss">
-    .ivu-breadcrumb{
-        padding-left:20px;
+<style lang="scss" scoped>
+    .routeBar{
+        padding: 0 20px;
         background-color: #fafafa;
         height:61px;
         line-height:60px;
         border-bottom: 1px solid #EBEEF5;
+        display: flex;
+        justify-content: space-between;
+        .left{
+            font-size: 18px;
+        }
     }
-    .ivu-breadcrumb-item-link{
-        font-size: 18px;
-    }
+
 </style>

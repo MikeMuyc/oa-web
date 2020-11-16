@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
+import notice from './notice'
 Vue.use(Router);
 
 export default new Router({
@@ -28,17 +28,19 @@ export default new Router({
 
                     component: () => import('../views/workplace/Main.vue'),
                 },
+
                 {
-                    path: 'template',
+                    path: '/template',
                     name: '标准页',
 
-                    component: () => import('../views/workplace/template.vue'),
+                    component: () => import('../views/template.vue'),
                 },
+                ...notice,
+
             ]
         },
-        {
-            path: '/Home',
-            component: () => import('../views/Home.vue'),
-        },
+
+
+
     ]
 });
