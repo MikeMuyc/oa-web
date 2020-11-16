@@ -15,13 +15,18 @@ export default class NavBread extends Vue {
     private handleRouteChange(): void {
         this.title = this.$route.meta.name;
     }
+
+    mounted(){
+        this.title = this.$route.meta.name;
+    }
+    
 }
 </script>
 <style lang="scss" scoped>
     .ivu-breadcrumb{
         padding-left:20px;
-        background-color: #F4F4F5;
-        height:61px;
+        background-color: #f7f7f7;
+        height:60px;
         line-height:61px;
     }
 </style>

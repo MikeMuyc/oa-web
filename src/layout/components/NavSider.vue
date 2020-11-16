@@ -1,6 +1,6 @@
 <template>
 	 <Sider >
-            <Menu active-name="1-1" width="auto">
+            <Menu active-name="1-1" >
                 <MenuItem name="1-1" to="/main/">
                     <span class="iconfont iconshouye-xuanzhong" style="font-size:20px;margin-right:10px"></span>
                     <span>OA工作台</span>
@@ -31,7 +31,7 @@
                     <MenuItem name="1-6-2">发文管理</MenuItem>
                 </Submenu>
 
-                <MenuItem name="1-7" to="/main/">
+                <MenuItem name="1-7" to="/main/addressbook-index">
                     <span class="iconfont iconbianzu" style="font-size:20px;margin-right:10px"></span>
                     <span>通讯录</span>
                 </MenuItem>
@@ -52,11 +52,13 @@
 	    </Sider>
 </template>
 
-<script>
-import { Vue, Component } from "vue-property-decorator";
+<script lang='ts'>
+import { Vue, Component,Watch } from "vue-property-decorator";
 
 @Component
-export default class NavSider extends Vue {}
+export default class NavSider extends Vue {
+   
+}
 </script>
 
 <style lang="scss" scoped>

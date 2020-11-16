@@ -71,6 +71,14 @@ export default new Router({
                     component: () => import('./views/workplace/Main.vue'),
                 },
                 {
+                    path: 'addressbook-index',
+                    meta: {
+                        name: '通讯录'
+                    },
+                    component: () => import('./views/addressbook/Main.vue'),
+                },
+
+                {
                     path: 'echarts',
                     meta: {
                         name: 'echarts'

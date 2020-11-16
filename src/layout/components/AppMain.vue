@@ -2,7 +2,7 @@
     <div class="app_main" >
         <Layout :style="{ minHeight: '100vh', flexDirection: 'row' }">
             <NavSider />
-            <Layout :style="{overflow: 'hidden'}">
+            <Layout :style="{overflow: 'hidden','margin-left':'56px'}" >
                 <Content>
                     <router-view></router-view>
                 </Content>
