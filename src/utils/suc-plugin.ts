@@ -1,20 +1,8 @@
-// import ECharts from 'vue-echarts';
-// import 'echarts/lib/chart/bar'
-// import 'echarts/lib/chart/line'
-// import 'echarts/lib/chart/pie'
-// import 'echarts/lib/chart/map'
-// import 'echarts/lib/chart/radar'
-// import 'echarts/lib/chart/scatter'
-// import 'echarts/lib/chart/effectScatter'
-// import 'echarts/lib/component/tooltip'
-// import 'echarts/lib/component/polar'
-// import 'echarts/lib/component/geo'
-// import 'echarts/lib/component/legend'
-// import 'echarts/lib/component/title'
-// import 'echarts/lib/component/visualMap'
-// import 'echarts/lib/component/dataset'
-import ECharts from '@/components/ECharts.vue';
 
+import ECharts from '@oa/components/ECharts.vue';
+import VuePerfectScrollbar from '@oa/plugins/perfect-scrollbar/scroll.vue';
+import mixSelect from '@oa/components/mixSelect/mixSelect.vue';
+import NavBread from '@oa/components/NavBread.vue';
 //通用方法集合
 const utils = {
     //时间戳转换成自定义字符串
@@ -38,25 +26,9 @@ const utils = {
         }
         return fmt;
     },
+
     deepCopy: (obj: any) => {
-        let result = Array.isArray(obj) ? [] : {};
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                if(obj[key]) {
-                    if (typeof obj[key] === 'object') {
-                        // @ts-ignore
-                        result[key] = utils.deepCopy(obj[key]); //递归复制
-                    } else {
-                        // @ts-ignore
-                        result[key] = obj[key];
-                    }
-                }else{
-                    // @ts-ignore
-                    result[key] = obj[key];
-                }
-            }
-        }
-        return result;
+        return JSON.parse(JSON.stringify(obj));
     }
 }
 
@@ -98,8 +70,11 @@ export default {
         //时间转换过滤器
         Vue.filter('dateFormat', utils.dateFormat);
 
-        //echarts的vue组件
+        //定义全局vue组件
         Vue.component('v-chart', ECharts);
+        Vue.component('vue-perfect-scrollbar', VuePerfectScrollbar);
+        Vue.component('mixSelect', mixSelect);
+        Vue.component('NavBread', NavBread);
 
         //将方法集添加到Vue实例上面去
         Vue.prototype.$utils = utils;
@@ -108,5 +83,36 @@ export default {
         Vue.prototype.$getMapConfig = function (common?: any) {
             return new Map(common);
         }
+
+        //点击该元素以外的部分触发的事件
+        Vue.directive('clickoutside', {
+            bind: function (
+                el: {
+                    contains: (arg0: any) => void;
+                    _vueClickOutside_: (e: any) => false | undefined;
+                },
+                binding: {
+                    expression: any;
+                    value: (arg0: any) => void;
+                }) {
+                function documentHandler(e: { target: any; }) {
+                    // @ts-ignore
+                    if (el.contains(e.target)) {
+                        return false;
+                    }
+                    if (binding.expression) {
+                        binding.value(e)
+                    }
+                }
+
+                // @ts-ignore
+                el._vueClickOutside_ = documentHandler;
+                document.addEventListener('click', documentHandler);
+            },
+            unbind: function (el: { _vueClickOutside_: (this: Document, ev: MouseEvent) => any; }) {
+                document.removeEventListener('click', el._vueClickOutside_);
+                delete el._vueClickOutside_;
+            }
+        });
     }
 }

@@ -29,9 +29,11 @@ module.exports = {
         /iview.src.(?!utils.date\.js\b).+js$/
     ],
     chainWebpack: config => {
-        // config.resolve.alias.set("@", resolve("src"));
+        config.resolve.alias
+            .set("@oa", resolve("src"))
     },
     devServer: {
+        port:8062,
         proxy: {
             "/api/": {
                 target: "https://sqfb.zjsq.net.cn:8089",

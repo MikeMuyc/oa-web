@@ -7,14 +7,13 @@
 
 <script lang="ts">
     import { Vue, Component } from "vue-property-decorator";
-    import { TopBar, AppMain } from "./components";
-    import { Route } from "vue-router";
-    import axios from "axios";
-    import store from "@/stores";
-    import { theme } from '@/stores/Theme';
-    import {NavSider} from './components'
+    import AppMain from './components/AppMain.vue'
+    import { theme } from '@oa/stores/Theme';
+    import NavSider from './components/NavSider.vue'
+    import topBar from './components/TopBar.vue'
+
     @Component({
-        components: {TopBar, AppMain,NavSider}
+        components: { topBar, AppMain,NavSider}
     })
     export default class mainView extends Vue {
 

@@ -1,60 +1,84 @@
 // 默认主题
 $default-theme: (
-        base-color: #fff,
-        border-color: #000,
-        // content: "\e80b",
-        // logout-img: "~@/assets/统一登录.png"
+        base-color: #2064CF,
+        border-color: #D8DEE5,
+        background-active: #4d83d9,
 );
-//红色主题
-$blue-theme: (
-        base-color: #409EFF,
-        border-color: #409EFF,
-        // content: "\e642",
-        // logout-img: "~@/assets/统一登录-选中.png"
-);
-//护眼主题
+
 $eyes-theme: (
         base-color: #27C992,
         border-color: #27C992,
-        // content: "\e642",
-        // logout-img: "~@/assets/统一登录-选中.png"
 );
-//护眼主题
+
 $dark-theme: (
         base-color: #263238,
         border-color: #263238,
-        // content: "\e642",
-        // logout-img: "~@/assets/统一登录-选中.png"
 );
+
 //定义映射集合
 $themes: (
         default-theme: $default-theme,
-        blue-theme: $blue-theme,
         eyes-theme: $eyes-theme,
         dark-theme: $dark-theme,
 );
 
+
+
 @mixin base-background() {
-  @each $theme-name, $theme in $themes {
-    [data-theme = '#{$theme-name}'] & {
-      background: map-get($map: $theme, $key: base-color);
+    @each $theme-name, $theme in $themes {
+        [data-theme = '#{$theme-name}'] & {
+            background-color: map-get($map: $theme, $key: base-color);
+
+        }
     }
-  }
+}
+@mixin base-background-active{
+    @each $theme-name, $theme in $themes {
+        [data-theme = '#{$theme-name}'] & {
+            background-color: map-get($map: $theme, $key: background-active);
+
+        }
+    }
 }
 
 @mixin base-border() {
-  @each $theme-name, $theme in $themes {
-    [data-theme = '#{$theme-name}'] & {
-      border-color: map-get($map: $theme, $key: border-color);
+    @each $theme-name, $theme in $themes {
+        [data-theme = '#{$theme-name}'] & {
+            border-color: map-get($map: $theme, $key: border-color);
+        }
     }
-  }
 }
 
-@mixin base-wancheng-icon() {
-  @each $theme-name, $theme in $themes {
-    [data-theme = '#{$theme-name}'] & {
-      content: map-get($map: $theme, $key: content);
+@mixin base-color() {
+    @each $theme-name, $theme in $themes {
+        [data-theme = '#{$theme-name}'] & {
+            color: map-get($map: $theme, $key: base-color);
+
+        }
     }
-  }
 }
+@mixin border-color() {
+    @each $theme-name, $theme in $themes {
+        [data-theme = '#{$theme-name}'] & {
+            border-color: map-get($map: $theme, $key: base-color);
+        }
+    }
+}
+@mixin border-box() {
+    @each $theme-name, $theme in $themes {
+        [data-theme = '#{$theme-name}'] & {
+            border:1px solid map-get($map: $theme, $key: base-color);
+        }
+    }
+}
+
+$success-color: #51AB44;
+$warning-color: #ED923A;
+$error-color: #F55955;
+
+$border-color: #D8DEE5;
+$second-font-color: #595959;
+$third-font-color: #8C8C8C;
+$tips-color:#BFBFBF;
+
 

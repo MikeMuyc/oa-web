@@ -1,7 +1,7 @@
 <template>
-	<div class="header_bar colorful">
+	<div class="header_bar ">
 		<img
-			src="@/assets/logo@2x.png"
+			src="@oa/assets/logo@2x.png"
 			alt=""
 			style="margin-right: 5px; margin-top: 7px"
 		/>
@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Vue, Component, Watch } from "vue-property-decorator";
 import { SucIcon, SucMenu, SucMenuItem, SucSubmenu } from "@suc/ui";
-import { theme } from "@/stores/Theme";
+import { theme } from "../../../stores/Theme";
 
 @Component({
 	components: {
@@ -59,11 +59,6 @@ export default class topBar extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-::v-deep .ivu-menu-item-active {
-	opacity: 0.7;
-}
-.colorful {
-	@include base-background();
-	@include base-border();
-}
+
+
 </style>

@@ -17,7 +17,7 @@
 <script lang="ts">
     import { Vue, Component } from "vue-property-decorator";
     // import { Injectable, Service } from "@suc/module";
-    // import { TestService } from "@/utils/TestService";
+    // import { TestService } from "@oa/utils/TestService";
 
     @Component
     export default class echarts extends Vue {
