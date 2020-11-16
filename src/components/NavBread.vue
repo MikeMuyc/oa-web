@@ -38,14 +38,11 @@ export default class NavBread extends Vue {
             font-size: 18px;
         }
     }
-<<<<<<< HEAD:src/views/layout/components/NavBread.vue
     .ivu-breadcrumb-item-link{
         font-size: 18px;
         background-color: #f7f7f7;
         height:60px;
         line-height:61px;
     }
-=======
 
->>>>>>> 7f892291ca66d6d0528fb8511dcc68a927c88317:src/components/NavBread.vue
 </style>

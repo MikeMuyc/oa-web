@@ -35,7 +35,6 @@ export default new Router({
 
                     component: () => import('../views/template.vue'),
                 },
-<<<<<<< HEAD
                 {
                     path: 'addressbook-index',
                     meta: {
@@ -43,10 +42,8 @@ export default new Router({
                     },
                     component: () => import('../views/addressbook/Main.vue'),
                 },
-=======
                 ...notice,
 
->>>>>>> 7f892291ca66d6d0528fb8511dcc68a927c88317
             ]
         },
 
