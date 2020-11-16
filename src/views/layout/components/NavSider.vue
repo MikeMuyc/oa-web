@@ -9,7 +9,7 @@
                 <span class="iconfont icongongzuoshenpi" style="font-size:20px;margin-right:10px"></span>
                 <span>工作审批</span>
             </MenuItem>
-            <MenuItem name="1-3" to="/">
+            <MenuItem name="1-3" :to="{name:'公告列表'}">
                 <span class="iconfont icontongzhigonggao" style="font-size:20px;margin-right:10px"></span>
                 <span>通知公告</span>
             </MenuItem>
@@ -48,6 +48,9 @@
                 <MenuItem name="1-8-2">用户管理</MenuItem>
                 <MenuItem name="1-8-3">流程管理</MenuItem>
             </Submenu>
+            <MenuItem name="1-9" :to="{name:'标准页'}">
+                <span>标准页</span>
+            </MenuItem>
         </Menu>
     </Sider>
 </template>

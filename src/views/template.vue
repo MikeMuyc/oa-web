@@ -447,7 +447,7 @@
     import {Vue, Component} from "vue-property-decorator";
     import {Spin, Select, Option, Icon, Page, CheckboxGroup, RadioGroup, Radio, Checkbox} from 'view-design'
 
-    import Input from '@oa/components/normalInput.vue';
+    import Input from '../components/normalInput.vue';
 
     @Component({
         components: {

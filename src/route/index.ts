@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
+import notice from './notice'
 Vue.use(Router);
 
 export default new Router({
@@ -28,12 +28,14 @@ export default new Router({
 
                     component: () => import('../views/workplace/Main.vue'),
                 },
+
                 {
-                    path: 'template',
+                    path: '/template',
                     name: '标准页',
 
-                    component: () => import('../views/workplace/template.vue'),
+                    component: () => import('../views/template.vue'),
                 },
+<<<<<<< HEAD
                 {
                     path: 'addressbook-index',
                     meta: {
@@ -41,11 +43,14 @@ export default new Router({
                     },
                     component: () => import('../views/addressbook/Main.vue'),
                 },
+=======
+                ...notice,
+
+>>>>>>> 7f892291ca66d6d0528fb8511dcc68a927c88317
             ]
         },
-        {
-            path: '/Home',
-            component: () => import('../views/Home.vue'),
-        },
+
+
+
     ]
 });
