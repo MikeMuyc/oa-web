@@ -31,7 +31,7 @@
                 <MenuItem name="1-6-2">发文管理</MenuItem>
             </Submenu>
 
-            <MenuItem name="1-7" to="/main/addressbookIndex">
+            <MenuItem name="1-7" :to="{name:'通讯录'}">
                 <span class="iconfont iconbianzu" style="font-size:20px;margin-right:10px"></span>
                 <span>通讯录</span>
             </MenuItem>

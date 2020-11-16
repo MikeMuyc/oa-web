@@ -47,6 +47,8 @@ export default new Router({
                             component: () => import('@oa/views/dailyReport/dailyReportList.vue'),
 
                         },
+                        ...addressbook,
+
                     ]
                 },
                 {

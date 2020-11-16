@@ -449,7 +449,6 @@
 
     @Component({
         components: {
-            normalInput,
             Icon,
             Spin,
             Page,
