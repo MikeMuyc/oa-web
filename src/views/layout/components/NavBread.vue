@@ -9,16 +9,17 @@ import { Vue, Component, Watch } from "vue-property-decorator";
 
 @Component
 export default class NavBread extends Vue {
-    title:string = '';
+    title:any = '';
 
     @Watch("$route")
     private handleRouteChange(): void {
-        this.title = this.$route.name;
+        this.title = this.$route.meta.name;
     }
 
-    mounted(): void {
-        this.title = this.$route.name;
+    mounted(){
+        this.title = this.$route.meta.name;
     }
+    
 }
 </script>
 <style lang="scss">
@@ -31,5 +32,8 @@ export default class NavBread extends Vue {
     }
     .ivu-breadcrumb-item-link{
         font-size: 18px;
+        background-color: #f7f7f7;
+        height:60px;
+        line-height:61px;
     }
 </style>
