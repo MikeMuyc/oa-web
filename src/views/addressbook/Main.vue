@@ -1,18 +1,31 @@
 <template>
-    <div class="addressbook">
-        <div class="gap"></div>
-        <div class="d-flex jc-between" style="margin:20px 32px;">
-            <div class="flex-1">
-                <Select v-model="model1" style="width:200px;margin-right:10px;">
-                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                </Select>
-                <Select v-model="model1" style="width:200px">
-                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                </Select>
+    <div class="addressbook" ref = 'addressbook'>
+        <div class="d-flex jc-between searchBar" style="margin:20px 32px;"  ref="searchBar">
+            <div class="d-flex flex-1 ">
+                <mixSelect
+                        v-model="orderState"
+                        :selectList="orderStateList"
+                        labelName="name"
+                        valueName="id"
+                        placeholder="工单状态"
+                        @sentItem="orderStateSearch"
+                        style="margin-right:20px;width:150px"
+                            >
+                </mixSelect>
+                <mixSelect
+                        v-model="orderState"
+                        :selectList="orderStateList"
+                        labelName="name"
+                        valueName="id"
+                        placeholder="工单状态"
+                        @sentItem="orderStateSearch"
+                        style="width:150px"
+                            >
+                </mixSelect>
             </div>
-            <div>
-                <Input v-model="inputValue" placeholder="请输入姓名" style="width: 150px;margin-right:10px;"/>
-                <div class="pmbtn primary">
+            <div class="d-flex ai-center">
+                <normalInput v-model="inputValue" placeholder="请输入姓名"></normalInput>
+                <div class="pmbtn primary" style="margin-left:10px">
                     <i class="iconfont iconsousuo"></i>查询
                 </div>
             </div>
@@ -23,6 +36,7 @@
                     :data="orderList"
                     class="myWisdomTable"
                     align="center"
+                    :height="formHeight"
             >
                 <template slot="empty">
                     <img src="@oa/assets/暂无数据.png">
@@ -90,7 +104,7 @@
                 >
                 </el-table-column>
             </el-table>
-            <div class="d-flex jc-center" style="margin-top:20px">
+            <div class="pageBottom" ref="pageBottom" >
                 <Page show-elevator show-total :page-size="pages.pageSize" :current="pages.pageNum"
                       :total="pages.totalElements"
                       @on-change="getPage"
@@ -108,39 +122,73 @@
     @Component({})
     export default class workplaceMain extends Vue {
         no: boolean = false;
-        model1: string = ''
+        model1: string = '';
         inputValue = '';
-        pages: object = {
+        orderState: string = '';
+        formHeight: number =600
+        pages: any = {
             pageSize: 10,
             pageNum: 1,
-            totalElements: ''
+            totalElements:0
         }
-        cityList: Array<Object> = [
+        orderList:Array<object>=[];
+        orderStateList: any = [
             {
-                value: 'London',
-                label: 'London'
+                id: '',
+                name: '全部状态',
             },
             {
-                value: 'Sydney',
-                label: 'Sydney'
+                id: '0',
+                name: '待审核',
             },
             {
-                value: 'Paris',
-                label: 'Paris'
+                id: '1',
+                name: '待接单',
             },
+            {
+                id: '3',
+                name: '待维修',
+            }]
 
-        ]
+        orderStateSearch(item:any) {
+            console.log(item)
+        }
 
         getPage() {
 
         }
+
+        setPageSize(){
+            let refs: any = this.$refs;
+            let maxHeight = refs.addressbook.clientHeight;
+            console.log(maxHeight);
+            // 40px 上下margin
+            let searchBarHight = refs.searchBar.clientHeight + 40;
+            console.log(searchBarHight)
+            let pageBottomHight = refs.pageBottom.clientHeight;
+            console.log(pageBottomHight)
+            this.formHeight =  maxHeight - searchBarHight - pageBottomHight ;
+            //表头高度49px，每一行高度48px;
+            this.pages.pageSize = Math.floor((this.formHeight - 49) / 48);
+            console.log( this.formHeight)
+        }
+
+         mounted(): void {
+            this.$nextTick(()=>{
+                this.setPageSize();
+            })
+        }
+        
+
+
+
+
     }
 </script>
 
 <style lang="scss" scoped>
     .addressbook {
-        background-color: #F7F7F7;
-        height:100%;
+        background-color: #fff;
     }
 
     .clearfix:after {
@@ -150,9 +198,13 @@
         clear: both;
         visibility: hidden;
     }
-
+    
     .clearfix {
         zoom: 1; /* ie6 */
+    }
+
+    .searchBar{
+        box-sizing: border-box;
     }
 
     .gap {
