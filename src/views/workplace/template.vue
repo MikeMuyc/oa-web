@@ -229,7 +229,7 @@
                         </div>
                         <div class="item">
                             <div class="pmbtn">
-                                <i class="iconfont iconzhongzhi"></i>重置
+                                <i class="iconfont iconshuaxin"></i>重置
                             </div>
                         </div>
                     </div>
@@ -714,7 +714,6 @@
         pages: any = {
             pageNum: 1,
             pageSize: 3,
-
             totalElements: 20,
         };
 
@@ -736,8 +735,8 @@
             console.log(item)
         }
 
-        getPage(page) {
-            this.pages.pageNum = page;
+        getPage(page?:number) {
+            this.pages.pageNum = page || 1;
             console.log(page)
         }
 

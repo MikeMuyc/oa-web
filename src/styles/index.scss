@@ -6,7 +6,11 @@
     height: 100%;
     width: 100%;
 }
-
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .header_bar {
     height: 56px;
     background-image: url('../assets/header/headerbg1.png') ;
@@ -70,44 +74,6 @@
     .ivu-layout{
         background:none;
     }
-    .workplace{
-        width:100%;
-        min-height:700px;
-        background-image: url('../assets/section/workplacebg.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        padding:32px;
-
-        .section{
-            flex:1;
-            margin:20px;
-            min-height:350px;
-            // &:nth-child(2n){
-            //     border-left:1px solid #eee;
-            // }
-        }
-        .section-title{
-            // width:526px;
-            height:56px;
-            font-family: Source Han Sans CN;
-            font-weight: 400;
-            line-height: 56px;
-            font-size:16px;
-            background-image: url('../assets/section/titlebg.png');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            padding:0 16px 0 48px;
-            display:flex;
-            justify-content: space-between;
-            span:nth-child(1){
-                font-size: 20px;
-                color: #890A03;
-                &+span{
-                    font-weight:600;
-                }
-            }
-        }
-    }
 }
 $flex-jc:( start:flex-start, end:flex-end, center:center, between:space-between, around:space-around, );
 $flex-ai:( start:flex-start, end:flex-end, center:center, stretch:stretch);
@@ -122,27 +88,6 @@ $color in $colors {
         background-color: $color
     }
 }
-
-.text-ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 200px;
-}
-
-//flex
-.d-flex {
-    display: flex;
-}
-
-.flex-column {
-    flex-direction: column;
-}
-
-.flex-wrap {
-    flex-wrap: wrap;
-}
-
 @each $key,
 $value in $flex-jc {
     .jc-#{$key} {
@@ -157,21 +102,14 @@ $value in $flex-ai {
     }
 }
 
-.flex-column {
-    flex-direction: column;
+/**element-ui 样式修改**/
+#app{
+    .el-button:hover, .el-button:focus{
+        background-color: #fff;
+    }
 }
 
-.flex-1 {
-    flex: 1;
-}
 
-.flex-grow-1 {
-    flex-grow: 1;
-}
-
-.ai-baseline {
-    align-items: baseline;
-}
 
 //通用按钮样式
 .pmbtn{
@@ -187,17 +125,18 @@ $value in $flex-ai {
     //border: solid 1px $theme-color;
     cursor: pointer;
     user-select: none;
-    transition: all .3s;
     position: relative;
     flex:none;
     .iconfont{
         font-size: 14px;
         margin-right: 4px;
         line-height: 1;
-        @include base-color();
     }
-    &:hover:not(.disable,.primary){
+    &:hover{
         @include base-color();
+        .iconfont{
+            @include base-color();
+        }
     }
     &:active:not(.disable,.primary){
         @include border-color();
@@ -212,6 +151,10 @@ $value in $flex-ai {
         }
         &:hover{
             color: #fff;
+            @include base-background();
+            .iconfont{
+                color: #fff;
+            }
         }
         &:active{
             box-shadow: 0 2px 5px #454e77 inset;
@@ -263,3 +206,5 @@ $value in $flex-ai {
         }
     }
 }
+
+

@@ -87,3 +87,16 @@ input[type=radio],input[type=checkbox]{
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color: $third-font-color;
 }
+
+button{
+    border: 0 none;
+}
+
+table {
+    border-spacing: unset;
+    text-align: left;
+}
+
+caption, th {
+    text-align: left;
+}
