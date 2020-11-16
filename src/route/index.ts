@@ -5,42 +5,68 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        {
-            path: '',
-            redirect: '/main',
-        },
+
         {
             path: '/login',
-            component: () => import('../views/Login.vue'),
+            component: () => import('@oa/views/Login.vue'),
         },
 
         { //懒加载
             path: '/main',
-            component: () => import('../views/layout/Main.vue'),
+            redirect: 'main/AppMain',
+            component: () => import('@oa/views/layout/Main.vue'),
             children: [
                 {
-                    path: '',
-                    redirect: 'workplaceIndex',
+                    path: 'AppMain',
+                    redirect: 'AppMain/workplaceIndex',
+                    component: () => import('@oa/views/layout/components/AppMain.vue'),
+                    children:[
+                        {
+                            path: 'workplaceIndex',
+                            name: 'OA工作台',
+
+                            component: () => import('@oa/views/workplace/Main.vue'),
+                        },
+                        {
+                            path: '/template',
+                            name: '标准页',
+
+                            component: () => import('@oa/views/template.vue'),
+                        },
+
+                        {
+                            name: '公告列表',
+                            path: 'noticeList',
+
+                            component: () => import('@oa/views/notice/noticeList.vue'),
+                        },
+                        {
+                            name: '日报周报',
+                            path: 'dailyReportList',
+                            component: () => import('@oa/views/dailyReport/dailyReportList.vue'),
+
+                        },
+                    ]
                 },
                 {
-                    path: 'workplaceIndex',
-                    name: 'OA工作台',
+                    path: 'AddMain',
+                    component: () => import('@oa/views/layout/components/noSlide_Main.vue'),
+                    children:[
+                        {
+                            name: '新增公告',
+                            path: 'addNotice',
 
-                    component: () => import('../views/workplace/Main.vue'),
+                            component: () => import('@oa/views/notice/addNotice.vue'),
+                        },
+                    ]
                 },
-
-                {
-                    path: '/template',
-                    name: '标准页',
-
-                    component: () => import('../views/template.vue'),
-                },
-                ...notice,
 
             ]
         },
 
-
-
+        {
+            path: '/*',
+            redirect: '/main',
+        },
     ]
 });

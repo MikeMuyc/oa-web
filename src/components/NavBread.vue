@@ -26,7 +26,7 @@ export default class NavBread extends Vue {
 </script>
 <style lang="scss" scoped>
     .routeBar{
-        padding: 0 20px;
+        padding: 0 30px;
         background-color: #fafafa;
         height:61px;
         line-height:60px;

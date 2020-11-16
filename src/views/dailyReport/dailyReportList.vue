@@ -1,11 +1,18 @@
 <template>
-    <div id="noticeList" ref="viewbox">
+    <div id="dailyReport" ref="viewbox">
         <div class="searchLine" ref="searchLine">
-            <div class="left"></div>
-            <div class="right">
+            <div class="left">
                 <normalInput placeholder="请输入关键字" style="margin-right: 10px"></normalInput>
                 <div class="pmbtn primary">
                     <i class="iconfont iconsousuo"></i>查询
+                </div>
+            </div>
+            <div class="right">
+                <div slot="rightSide" class="pmbtn primary" @click="$router.push({name:'新增公告'})">
+                    <i class="iconfont iconxinzeng"></i>新增周报
+                </div>
+                <div slot="rightSide" class="pmbtn primary" @click="$router.push({name:'新增公告'})" style="margin-left: 20px">
+                    <i class="iconfont iconxinzeng"></i>新增日报
                 </div>
             </div>
         </div>
@@ -19,24 +26,32 @@
                 暂无内容
             </template>
             <el-table-column
-                    type="selection"
-                    label=""
-                    width="80px"
-                    align="center"
-            >
-            </el-table-column>
-            <el-table-column
-                    prop="title"
-                    label="主题"
-                    min-width="300px"
-                    show-overflow-tooltip
+                    prop="time"
+                    label="填报时间"
+                    min-width="170px"
+
             >
             </el-table-column>
 
             <el-table-column
-                    prop="time"
-                    label="时间"
-                    min-width="170px"
+                    prop="reporter"
+                    label="填报人"
+                    min-width="140px"
+            >
+            </el-table-column>
+
+            <el-table-column
+                    prop="morning"
+                    label="上午"
+                    min-width="240px"
+                    show-overflow-tooltip
+            >
+            </el-table-column>
+            <el-table-column
+                    prop="afternoon"
+                    label="下午"
+                    min-width="240px"
+                    show-overflow-tooltip
             >
             </el-table-column>
             <el-table-column
@@ -46,7 +61,6 @@
             >
                 <template slot-scope="{row,$index}">
                     <font class="fontBtn">详情</font>
-                    <font class="fontBtn-delete">删除</font>
                 </template>
             </el-table-column>
         </el-table>
@@ -81,16 +95,16 @@
 
         orderList: any = [
             {
-                title: '【工作提醒】2020年XX工作内容已经下发，请及时准备完成工作内……',
+                reporter: '张娜拉',
                 time: '2020-5-3 19:32:32',
+                morning:'调研',
+                afternoon:'-',
             },
             {
-                title: '【工作提醒】2020年XX工作内容已经下发，请及时准备完成工作内……',
-                time: '2020-5-3 19:32:32',
-            },
-            {
-                title: '【工作提醒】2020年XX工作内容已经下发，请及时准备完成工作内……',
-                time: '2020-5-3 19:32:32',
+                reporter: '张文',
+                time: '2020-5-13 19:33:12',
+                morning:'实地勘察',
+                afternoon:'写报告',
             },
         ];
 
@@ -123,7 +137,7 @@
 </script>
 
 <style lang="scss" scoped>
-    #noticeList{
+    #dailyReport{
         height: 100%;
     }
 </style>
