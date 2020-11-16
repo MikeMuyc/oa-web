@@ -10,11 +10,11 @@
 html, body {
     padding-right: 0 !important;
     width: 100%;
-    //height: 100%;
+    height: 100%;
     margin: 0 auto;
     min-width: 1366px;
     overflow-x: auto;
-    //overflow-y: hidden;
+    overflow-y: hidden;
     font-size: 14px;
     color: #333;
 }
@@ -64,7 +64,6 @@ input[type=text],input[type="number"]{
     outline: none;
     padding: 0 10px;
     border: 1px solid #dde4eb;
-    width: 100%;
 }
 input[type="number"]{
     -moz-appearance:textfield;

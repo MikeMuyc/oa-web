@@ -1,6 +1,6 @@
 <template>
     <div id="orderList">
-        <vue-perfect-scrollbar class="orderListMain">
+
             <div class="square">
                 <div class="left">
                     <div class="center">
@@ -232,6 +232,12 @@
                                 <i class="iconfont iconshuaxin"></i>重置
                             </div>
                         </div>
+                        <div class="item">
+                            <div class="pmbtn primary">
+                                <i class="iconfont iconxinzeng"></i>新增
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -247,7 +253,6 @@
                         <div class="item" style="width: 860px;">
                             <el-table
                                     :data="orderList"
-                                    stripe
                                     class="myWisdomTable"
                             >
                                 <template slot="empty" >
@@ -292,7 +297,8 @@
                                         width="120px"
                                 >
                                     <template slot-scope="{row,$index}">
-
+                                        <font class="fontBtn">详情</font>
+                                        <font class="fontBtn-delete">删除</font>
                                     </template>
                                 </el-table-column>
                             </el-table>
@@ -392,7 +398,6 @@
 
 
 
-        </vue-perfect-scrollbar>
 
         <el-dialog
                 :visible.sync="dialogVisible"
@@ -782,70 +787,70 @@
         height: 100%;
 
         .orderListMain {
-            width: calc(100% - 10px);
+            width: 100%;
             height: calc(100% - 46px);
-            margin: 5px;
             background-color: #fff;
 
-            .square {
-                display: flex;
-                padding: 30px;
 
-                .left {
-                    width: 200px;
-                    display: inline-flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: center;
+        }
+        .square {
+            display: flex;
+            padding: 30px;
 
-                    .center {
-                        text-align: right;
-                    }
+            .left {
+                width: 200px;
+                display: inline-flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
 
-                    .num, .text {
-                        @include base-color();
-                        font-size: 32px;
-                        line-height: 1;
-                    }
-
-                    .num {
-                        font-size: 50px;
-                    }
+                .center {
+                    text-align: right;
                 }
 
-                .right {
-                    flex: 1;
+                .num, .text {
+                    @include base-color();
+                    font-size: 32px;
+                    line-height: 1;
+                }
+
+                .num {
+                    font-size: 50px;
+                }
+            }
+
+            .right {
+                flex: 1;
 
 
-                    .colorBox {
-                        width: 130px;
-                        height: 100px;
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: #fff;
-                        margin-right: 20px;
-                        margin-bottom: 10px;
+                .colorBox {
+                    width: 130px;
+                    height: 100px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    margin-right: 20px;
+                    margin-bottom: 10px;
 
-                        &.normal {
-                            @include base-background();
-                        }
+                    &.normal {
+                        @include base-background();
+                    }
 
-                        &.background {
-                            //@include background-image;
-                        }
+                    &.background {
+                        //@include background-image;
+                    }
 
-                        &.success {
-                            background-color: $success-color;
-                        }
+                    &.success {
+                        background-color: $success-color;
+                    }
 
-                        &.warning {
-                            background-color: $warning-color;
-                        }
+                    &.warning {
+                        background-color: $warning-color;
+                    }
 
-                        &.error {
-                            background-color: $error-color;
-                        }
+                    &.error {
+                        background-color: $error-color;
                     }
                 }
             }

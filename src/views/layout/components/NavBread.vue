@@ -24,10 +24,10 @@ export default class NavBread extends Vue {
 <style lang="scss">
     .ivu-breadcrumb{
         padding-left:20px;
-        background-color: #F4F4F5;
-        height:60px;
+        background-color: #fafafa;
+        height:61px;
         line-height:60px;
-
+        border-bottom: 1px solid #EBEEF5;
     }
     .ivu-breadcrumb-item-link{
         font-size: 18px;

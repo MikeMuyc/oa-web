@@ -6,35 +6,39 @@
     height: 100%;
     width: 100%;
 }
+
 .text-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .header_bar {
     height: 56px;
-    background-image: url('../assets/header/headerbg1.png') ;
+    background-image: url('../assets/header/headerbg1.png');
     background-repeat: no-repeat;
     background-color: #fff;
     background-size: 100% 100%;
-    display:flex;
+    display: flex;
     align-items: center;
-    padding:0 20px;
+    padding: 0 20px;
 
-    width:100%;
+    width: 100%;
 
-    .title{
+    .title {
 
         font-size: 20px;
         font-family: Source Han Sans CN;
         font-weight: 400;
         line-height: 25px;
         color: #333333;
-        flex:1;
+        flex: 1;
 
     }
+
     .suc-menu {
         height: 100%;
+
         > ul {
             float: right;
             line-height: 50px;
@@ -44,40 +48,11 @@
     }
 }
 
-.app_main {
-    padding-top:30px;
-    width:100%;
-    height: calc(100% - 56px);
-    background-image: url('../assets/content/contentbg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    .ol-mouse-position {
-        bottom: 8px;
-        top: auto;
-    }
-    .ivu-layout-sider{
-        background:none;
-    }
-    // .ivu-menu{
-    //     width:267px;
-    // }
 
-    // .ivu-menu-item {
-    //     width:267px;
-    // }
-    .ivu-menu-light{
-        background:none;
-    }
-    .ivu-menu-vertical.ivu-menu-light:after{
-        content:none;
-    }
-    .ivu-layout{
-        background:none;
-    }
-}
-$flex-jc:( start:flex-start, end:flex-end, center:center, between:space-between, around:space-around, );
-$flex-ai:( start:flex-start, end:flex-end, center:center, stretch:stretch);
-$colors:( primary:rgb(70, 129, 255), "white":#fff);
+
+$flex-jc: (start:flex-start, end:flex-end, center:center, between:space-between, around:space-around,);
+$flex-ai: (start:flex-start, end:flex-end, center:center, stretch:stretch);
+$colors: (primary:rgb(70, 129, 255), "white":#fff);
 //color
 @each $colorKey,
 $color in $colors {
@@ -88,6 +63,7 @@ $color in $colors {
         background-color: $color
     }
 }
+
 @each $key,
 $value in $flex-jc {
     .jc-#{$key} {
@@ -102,17 +78,14 @@ $value in $flex-ai {
     }
 }
 
-/**element-ui 样式修改**/
-#app{
-    .el-button:hover, .el-button:focus{
-        background-color: #fff;
-    }
+/**element-ui 样式调整**/
+
+.el-table th.is-leaf{
+    background-color: #FAFAFA;
 }
 
-
-
 //通用按钮样式
-.pmbtn{
+.pmbtn {
     height: 32px;
     min-width: 72px;
     background-color: #fff;
@@ -126,85 +99,113 @@ $value in $flex-ai {
     cursor: pointer;
     user-select: none;
     position: relative;
-    flex:none;
-    .iconfont{
+    flex: none;
+
+    .iconfont {
         font-size: 14px;
         margin-right: 4px;
         line-height: 1;
     }
-    &:hover{
+
+    &:hover {
         @include base-color();
-        .iconfont{
+
+        .iconfont {
             @include base-color();
         }
     }
-    &:active:not(.disable,.primary){
+
+    &:active:not(.disable,.primary) {
         @include border-color();
     }
 
-    &.primary{
+    &.primary {
         @include base-background();
         @include border-box();
         color: #fff;
-        .iconfont{
+
+        .iconfont {
             color: #fff;
         }
-        &:hover{
+
+        &:hover {
             color: #fff;
             @include base-background();
-            .iconfont{
+
+            .iconfont {
                 color: #fff;
             }
         }
-        &:active{
+
+        &:active {
             box-shadow: 0 2px 5px #454e77 inset;
         }
     }
 
-    &.disable{
+    &.disable {
         border-color: #c6c9ce;
         color: #a0a5a9;
         cursor: not-allowed;
-        .iconfont{
+
+        .iconfont {
             color: #a0a5a9;
         }
-        &:hover{
+
+        &:hover {
 
         }
-        &:active{
+
+        &:active {
             box-shadow: none;
         }
     }
-    &.disable.primary{
+
+    &.disable.primary {
         cursor: not-allowed;
         border-color: #a0a5a9;
         background-color: #a0a5a9;
         color: #fff;
-        .iconfont{
+
+        .iconfont {
             color: #fff;
         }
-        &:hover{
+
+        &:hover {
 
         }
-        &:active{
+
+        &:active {
             box-shadow: none;
         }
     }
 
-    &.delete{
+    &.delete {
         background-color: $error-color;
         border: 1px solid $error-color;
         color: #fff;
-        .iconfont{
+
+        .iconfont {
             color: #fff;
         }
-        &:hover{
+
+        &:hover {
             color: #fff;
         }
-        &:active{
+
+        &:active {
             box-shadow: 0 2px 5px #D24C48 inset;
         }
     }
 }
 
+.fontBtn{
+    @include base-color();
+    margin: 0 5px;
+    cursor: pointer;
+}
+.fontBtn-delete{
+    color: $error-color;
+    margin: 0 5px;
+    cursor: pointer;
+}
 

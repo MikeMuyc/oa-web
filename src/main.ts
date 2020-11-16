@@ -13,10 +13,10 @@ import authox from '@suc/authox/plugins/authox-vue';
 import VueOl from '@suc/monch';
 
 
-import './styles/index.scss';
+
 import '@suc/authox/styles/authox.scss';
 import ViewUI from 'view-design'
-import "iview/dist/styles/iview.css";
+// import "iview/dist/styles/iview.css";
 import 'view-design/dist/styles/iview.css';
 
 
