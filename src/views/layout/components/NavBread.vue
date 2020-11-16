@@ -13,11 +13,11 @@ export default class NavBread extends Vue {
 
     @Watch("$route")
     private handleRouteChange(): void {
-        this.title = this.$route.meta.name;
+        this.title = this.$route.name;
     }
 
     mounted(){
-        this.title = this.$route.meta.name;
+        this.title = this.$route.name;
     }
     
 }

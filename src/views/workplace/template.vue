@@ -722,21 +722,21 @@
             totalElements: 20,
         };
 
-        tabChange(item){
+        tabChange(item:any){
             console.log(item)
         }
-        conso(valName: string) {
-            console.log(this[valName], typeof this[valName])
+        conso(valName:any) {
+            console.log(this[valName] , typeof this[valName])
         }
 
-        projectSearch(val) {
+        projectSearch(val:any) {
             console.log(val)
         }
-        getmultiple(val) {
+        getmultiple(val:any) {
             console.log(val)
         }
 
-        orderStateSearch(item) {
+        orderStateSearch(item:any) {
             console.log(item)
         }
 

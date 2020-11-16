@@ -34,6 +34,13 @@ export default new Router({
 
                     component: () => import('../views/workplace/template.vue'),
                 },
+                {
+                    path: 'addressbook-index',
+                    meta: {
+                        name: '通讯录'
+                    },
+                    component: () => import('../views/addressbook/Main.vue'),
+                },
             ]
         },
         {

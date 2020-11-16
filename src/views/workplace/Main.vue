@@ -75,25 +75,64 @@
 </script>
 
 <style lang="scss" scoped>
+   
     .workplace{
         width:100%;
-        min-height:700px;
+        height:calc(100% - 40px);
         background-image: url('../../assets/section/workplacebg.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        padding:32px;
-
+        margin-right:52px;
+        div:nth-child(1){
+            
+            .section:nth-child(1){
+                border-bottom:2px solid #eee;
+            }
+            .section:nth-child(2){
+                border-bottom:2px solid #eee;
+            }
+        }
+       
         .section{
             flex:1;
-            margin:20px;
-            min-height:350px;
-            // &:nth-child(2n){
-            //     border-left:1px solid #eee;
-            // }
+            width:50%;
+            flex-shrink:0;
+            flex-wrap: wrap;
+            padding:20px 32px;
+            height:370px;
+         
+            &:nth-child(2n){
+                border-left:2px solid #eee;
+            }
+            .section-content{
+                margin-top:26px;
+            }
+            
+            .grey-text{
+                font-size: 14px;
+                font-weight: 400;
+                color: #8C8C8C;
+            }
+            .list-item{
+                margin-bottom:10px;
+                .list-circle{
+                    width: 12px;
+                    height: 12px;
+                    border: 1px solid #070F3A;
+                    border-radius: 50%;
+                    margin-right:5px;
+                }
+                .list-title{
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #262626;
+    
+                }
+            }
         }
         .section-title{
-            // width:526px;
             height:56px;
+            font-family: Source Han Sans CN;
             font-weight: 400;
             line-height: 56px;
             font-size:16px;
@@ -112,4 +151,5 @@
             }
         }
     }
+
 </style>
