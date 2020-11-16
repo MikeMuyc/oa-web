@@ -6,4 +6,5 @@ export default [
 
         component: () => import('@oa/views/notice/noticeList.vue'),
     },
+
 ]

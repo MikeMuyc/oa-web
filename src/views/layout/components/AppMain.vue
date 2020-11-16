@@ -3,7 +3,9 @@
         <NavSider/>
         <div class="main-content ">
             <NavBread>
-                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'">新增公告</div>
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'" @click="$router.push({name:'新增公告'})">
+                    <i class="iconfont iconxinzeng"></i>新增公告
+                </div>
                 <div slot="rightSide"  v-if="routeName === '通讯录'">
                     <div class="pmbtn primary" style="margin-right:10px">
                         <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
@@ -77,7 +79,6 @@
         .routerView{
             height: calc(100% - 60px);
             background-color: #fff;
-            // padding-right: 15px;
         }
     }
 </style>

@@ -106,7 +106,7 @@
                 <div class="right">
                     <div class="aline">
                         <div class="item">
-                            <Input v-model="name" placeholder="请输入姓名"></Input>
+                            <normalInput v-model="name" placeholder="请输入姓名"></normalInput>
                         </div>
                         <div class="item btn" @click="conso(`name`)">
                             默认，type="text",字符串
@@ -114,7 +114,7 @@
                     </div>
                     <div class="aline">
                         <div class="item">
-                            <Input type="number" v-model="valNumber" placeholder="请输入正整数"></Input>
+                            <normalInput type="number" v-model="valNumber" placeholder="请输入正整数"></normalInput>
                         </div>
                         <div class="item btn" @click="conso(`valNumber`)">
                             正整数，type="number", 大于等于0的整数
@@ -122,7 +122,7 @@
                     </div>
                     <div class="aline">
                         <div class="item">
-                            <Input type="float" v-model="valFloat" placeholder="请输入正数"></Input>
+                            <normalInput type="float" v-model="valFloat" placeholder="请输入正数"></normalInput>
                         </div>
                         <div class="item btn" @click="conso(`valFloat`)">
                             正数，type="float", 大于等于0的数
@@ -130,7 +130,7 @@
                     </div>
                     <div class="aline">
                         <div class="item">
-                            <Input type="allNumber" v-model="valAllNumber" placeholder="请输入整数"></Input>
+                            <normalInput type="allNumber" v-model="valAllNumber" placeholder="请输入整数"></normalInput>
                         </div>
                         <div class="item btn" @click="conso(`valAllNumber`)">
                             所有整数，type="allNumber"
@@ -138,7 +138,7 @@
                     </div>
                     <div class="aline">
                         <div class="item">
-                            <Input type="allNumber" placeholder="禁止输入" :disabled="true"></Input>
+                            <normalInput type="allNumber" placeholder="禁止输入" :disabled="true"></normalInput>
                         </div>
                         <div class="item btn">
                             禁止输入
@@ -146,7 +146,7 @@
                     </div>
                     <div class="aline">
                         <div class="item">
-                            <Input type="search" placeholder="搜索" ></Input>
+                            <normalInput type="search" placeholder="搜索" ></normalInput>
                         </div>
                         <div class="item btn">
                             搜索框，搜索事件：@enter
@@ -219,7 +219,7 @@
 
                     <div class="aline">
                         <div class="item">
-                            <Input v-model="name" placeholder="请输入名称"></Input>
+                            <normalInput v-model="name" placeholder="请输入名称"></normalInput>
                         </div>
                         <div class="item">
                             <div class="pmbtn primary">
@@ -253,7 +253,6 @@
                         <div class="item" style="width: 860px;">
                             <el-table
                                     :data="orderList"
-                                    class="myWisdomTable"
                             >
                                 <template slot="empty" >
                                     <img src="@oa/assets/暂无数据.png">
@@ -413,25 +412,25 @@
                 <div class="aline">
                     <div class="item btn">房间代码：</div>
                     <div class="item">
-                        <Input style="width: 200px" placeholder="房间代码"></Input>
+                        <normalInput style="width: 200px" placeholder="房间代码"></normalInput>
                     </div>
                 </div>
                 <div class="aline">
                     <div class="item btn">房间代码：</div>
                     <div class="item">
-                        <Input style="width: 200px" placeholder="房间代码"></Input>
+                        <normalInput style="width: 200px" placeholder="房间代码"></normalInput>
                     </div>
                 </div>
                 <div class="aline">
                     <div class="item btn">房间代码：</div>
                     <div class="item">
-                        <Input style="width: 200px" placeholder="房间代码"></Input>
+                        <normalInput style="width: 200px" placeholder="房间代码"></normalInput>
                     </div>
                 </div>
                 <div class="aline">
                     <div class="item btn">房间代码：</div>
                     <div class="item">
-                        <Input style="width: 200px" placeholder="房间代码"></Input>
+                        <normalInput style="width: 200px" placeholder="房间代码"></normalInput>
                     </div>
                 </div>
             </div>
@@ -447,11 +446,10 @@
     import {Vue, Component} from "vue-property-decorator";
     import {Spin, Select, Option, Icon, Page, CheckboxGroup, RadioGroup, Radio, Checkbox} from 'view-design'
 
-    import Input from '../components/normalInput.vue';
 
     @Component({
         components: {
-            Input,
+            normalInput,
             Icon,
             Spin,
             Page,

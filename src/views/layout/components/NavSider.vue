@@ -1,7 +1,7 @@
 <template>
     <Sider>
         <Menu active-name="1-1" width="auto">
-            <MenuItem name="1-1" to="/main/">
+            <MenuItem name="1-1" :to="{name:'OA工作台'}">
                 <span class="iconfont iconshouye-xuanzhong" style="font-size:20px;margin-right:10px"></span>
                 <span>OA工作台</span>
             </MenuItem>
@@ -13,7 +13,7 @@
                 <span class="iconfont icontongzhigonggao" style="font-size:20px;margin-right:10px"></span>
                 <span>通知公告</span>
             </MenuItem>
-            <MenuItem name="1-4" to="/">
+            <MenuItem name="1-4" :to="{name:'日报周报'}">
                 <span class="iconfont iconzhoubaoribao" style="font-size:20px;margin-right:10px"></span>
                 <span>日报周报</span>
             </MenuItem>

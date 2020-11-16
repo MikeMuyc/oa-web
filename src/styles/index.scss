@@ -102,6 +102,11 @@ $value in $flex-ai {
 .el-table th.is-leaf{
     background-color: #FAFAFA;
 }
+.el-table th > .cell,.el-table .cell{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 
 //通用按钮样式
 .pmbtn {
@@ -228,3 +233,22 @@ $value in $flex-ai {
     cursor: pointer;
 }
 
+//搜索栏，标题栏
+.searchLine{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    .left,.right{
+        display: inline-flex;
+    }
+
+}
+
+.pageBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
