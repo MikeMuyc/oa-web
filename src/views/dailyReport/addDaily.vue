@@ -1,5 +1,5 @@
 <template>
-    <div id="addNotice" class="addModule">
+    <div id="addDaily" class="addModule">
         <div class="content">
             <div class="backLine">
                 <div class="left" @click="$router.go(-1)">
@@ -9,25 +9,29 @@
                 <div class="right">
 
                     <div class="pmbtn primary" >
-                        <i class="iconfont iconfabu"></i>发布
+                        <i class="iconfont iconfabu"></i>提交
                     </div>
 
                 </div>
             </div>
-            <div class="whiteSpace">
-                <div class="title">新建通知公告</div>
-                <div class="label">收件人</div>
-                <normalInput class="input" placeholder="请选择部门、人员"></normalInput>
+            <vue-perfect-scrollbar class="whiteSpace">
+                <div class="title">新建日报</div>
+                <div class="label">日报所属日期</div>
+                <div class="info">
+                    <DatePicker v-model="time1" type="date" placeholder="选择日报所属日期" style="width: 220px"></DatePicker>
+                </div>
 
-                <div class="label">标题</div>
-                <normalInput class="input" placeholder="请输入标题"></normalInput>
+                <div class="label">上午工作情况</div>
+                <div class="info">
+                    <textarea class="input" style="height: 100px" placeholder="请输入上午工作情况"></textarea>
+                </div>
 
-                <div class="label">消息详情</div>
-                <textarea class="input" style="height: 200px" placeholder="请输入消息详情"></textarea>
+                <div class="label">下午工作情况</div>
+                <div class="info">
+                    <textarea class="input" style="height: 100px" placeholder="请输入下午工作情况"></textarea>
+                </div>
 
-                <div class="label">附件</div>
-                <div class="pmbtn change" >上传</div>
-            </div>
+            </vue-perfect-scrollbar>
         </div>
 
     </div>
@@ -56,7 +60,7 @@
 
 
 
-
+        time1:any = '';
         mounted(): void {
 
         }

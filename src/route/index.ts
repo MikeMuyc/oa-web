@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import notice from './notice';
+import document from './document';
 import addressbook from './addressbook';
+
 Vue.use(Router);
 
 export default new Router({
@@ -36,7 +37,7 @@ export default new Router({
                         },
 
                         {
-                            name: '公告列表',
+                            name: '通知公告',
                             path: 'noticeList',
 
                             component: () => import('@oa/views/notice/noticeList.vue'),
@@ -48,6 +49,7 @@ export default new Router({
 
                         },
                         ...addressbook,
+                        ...document,
 
                     ]
                 },
@@ -56,10 +58,28 @@ export default new Router({
                     component: () => import('@oa/views/layout/components/noSlide_Main.vue'),
                     children:[
                         {
-                            name: '新增公告',
+                            name: '新建公告',
                             path: 'addNotice',
 
                             component: () => import('@oa/views/notice/addNotice.vue'),
+                        },
+                        {
+                            name: '新建日报',
+                            path: 'addDaily',
+
+                            component: () => import('@oa/views/dailyReport/addDaily.vue'),
+                        },
+                        {
+                            name: '新建周报',
+                            path: 'addWeekly',
+
+                            component: () => import('@oa/views/dailyReport/addWeekly.vue'),
+                        },
+                        {
+                            name: '新建发文',
+                            path: 'addDocument',
+
+                            component: () => import('@oa/views/document/addDocument.vue'),
                         },
                     ]
                 },

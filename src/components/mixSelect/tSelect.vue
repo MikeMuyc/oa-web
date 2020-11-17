@@ -139,7 +139,7 @@
 
 <style lang="scss" scoped>
     $white-color:#fff;
-
+    $boxHeight:32px;
     .tSelect {
         z-index: 99;
         position: absolute;
@@ -160,7 +160,7 @@
             }
             .tLabel{
                 padding: 10px 30px 10px 10px;
-                height: 36px;
+                height: $boxHeight;
                 display:flex;
                 align-items: center;
                 user-select: none;

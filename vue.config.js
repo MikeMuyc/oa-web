@@ -35,11 +35,20 @@ module.exports = {
     devServer: {
         port:8062,
         proxy: {
-            "/api/": {
-                target: "https://sqfb.zjsq.net.cn:8089",
+            //汪刚毅
+            "/apw/": {
+                target: "http://172.18.0.164",
                 changeOrigin: true,
                 pathRewrite: {
-                    "^/api": ""
+                    "^/apw": ""
+                }
+            },
+            //张虎达
+            "/apz/": {
+                target: "https://172.18.0.164",
+                changeOrigin: true,
+                pathRewrite: {
+                    "^/apz": ""
                 }
             }
         }

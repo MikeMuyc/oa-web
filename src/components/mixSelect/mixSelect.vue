@@ -276,12 +276,13 @@
 
 <style lang="scss" scoped>
 
-
+    $boxHeight:32px;
     .singleBOX{
         background-color: #fff;
-        width: 100%;
-        min-height: 36px;
+        width: 180px;
+        min-height: $boxHeight;
         border: 1px solid #dde4eb;
+        @include base-border();
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -310,15 +311,15 @@
             color:$third-font-color;
             font-style: normal;
             margin-bottom: 5px;
-            line-height: 24px;
-            height: 24px;
+            line-height: $boxHeight - 10px;
+            height: $boxHeight - 10px;
             &.active{
                 color: #333;
             }
         }
         .curBox{
             padding: 0 4px;
-            height: 24px;
+            height: $boxHeight - 10px;
             display: inline-flex;
             background-color: #f4f6f9;
             border-radius: 2px;
@@ -338,7 +339,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        height: 34px;
+        height: $boxHeight - 2px;
         width: 30px;
         overflow: hidden;
         transition: all 0.3s;
@@ -358,7 +359,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        height: 34px;
+        height: $boxHeight - 2px;
         width: 30px;
         overflow: hidden;
         transition: all 0.3s;
