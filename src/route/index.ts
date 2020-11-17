@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import notice from './notice';
 import addressbook from './addressbook';
+import management from './management';
 Vue.use(Router);
-
 export default new Router({
     routes: [
 
@@ -48,6 +48,7 @@ export default new Router({
 
                         },
                         ...addressbook,
+                        ...management
 
                     ]
                 },

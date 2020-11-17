@@ -20,7 +20,6 @@
             <vue-perfect-scrollbar class="routerView">
                 <router-view class=""></router-view>
             </vue-perfect-scrollbar>
-
         </div>
     </div>
 </template>
