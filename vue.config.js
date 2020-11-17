@@ -36,7 +36,7 @@ module.exports = {
         port:8062,
         proxy: {
             "/api/": {
-                target: "https://sqfb.zjsq.net.cn:8089",
+                target: "http://172.18.0.164:80",
                 changeOrigin: true,
                 pathRewrite: {
                     "^/api": ""

@@ -2,7 +2,7 @@
   <div class="user" ref="user">
     <div class="d-flex jc-between searchBar" style="margin:20px 32px;"  ref="searchBar">
           <div class="d-flex ai-center">
-              <normalInput v-model="inputValue" placeholder="请输入姓名"></normalInput>
+              <normalInput v-model="inputValue" placeholder="请输入关键字"></normalInput>
               <div class="pmbtn primary" style="margin-left:10px">
                   <i class="iconfont iconsousuo"></i>查询
               </div>
@@ -22,7 +22,7 @@
     <!-- table -->
         <div class="item">
             <el-table
-                    :data="orderList"
+                    :data="tableData"
                     class="myWisdomTable"
                     align="center"
                     :height="formHeight"
@@ -33,7 +33,13 @@
                     暂无内容
                 </template>
                 <el-table-column
-                        header-align="center"
+                    type="selection"
+                    label=""
+                    width="80px"
+                    align="center"
+            >
+            </el-table-column>
+                <el-table-column
                         prop="name"
                         label="姓名"
                         width="100px"
@@ -41,8 +47,7 @@
                 >
                 </el-table-column>
                  <el-table-column
-                        header-align="center"
-                        prop="name"
+                        prop="username"
                         label="用户名"
                         width="100px"
                         show-overflow-tooltip
@@ -51,22 +56,20 @@
                  <el-table-column
                         prop="role"
                         label="角色"
-                        min-width="132px"
+                        min-width="100px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        header-align="center"
                         prop="department"
                         label="处（科）室"
                         min-width="126px"
-
                 >
                 </el-table-column>
                 <el-table-column
                         prop="position"
                         label="职务"
-                        min-width="92px"
+                        min-width="100px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
@@ -95,13 +98,12 @@
                <el-table-column
                     label="操作"
                     align="center"
-                    width="150px"
+                    width="220px"
             >
                 <template slot-scope="{row,$index}">
                     <font class="fontBtn">详情</font>
+                    <font class="fontBtn">重置密码</font>
                     <font class="fontBtn-delete">删除</font>
-                    <font class="fontBtn-delete">重置密码</font>
-
                 </template>
             </el-table-column>
             </el-table>
@@ -133,6 +135,18 @@
             pageNum: 1,
             totalElements:0
         }
+        tableData:Array<object> = [
+          {
+            name:'张原',
+            username:'zhang',
+            role:'管理员',
+            telephone:'1234567',
+            cellphone:'123456787',
+            department:'应用二部',
+            position:'engineer instructors',
+            workplace:'xxx',
+          }
+        ]
         orderList:Array<object>=[];
         orderStateList: any = [
             {
@@ -163,16 +177,10 @@
         setPageSize(){
             let refs: any = this.$refs;
             let maxHeight = refs.user.clientHeight;
-            console.log(maxHeight);
-            // 40px 上下margin
-            let searchBarHight = refs.searchBar.clientHeight + 40;
-            console.log(searchBarHight)
+            let searchBarHight = refs.searchBar.clientHeight + 40;  // 40px 上下margin
             let pageBottomHight = refs.pageBottom.clientHeight;
-            console.log(pageBottomHight)
             this.formHeight =  maxHeight - searchBarHight - pageBottomHight ;
-            //表头高度49px，每一行高度48px;
-            this.pages.pageSize = Math.floor((this.formHeight - 49) / 48);
-            console.log( this.formHeight)
+            this.pages.pageSize = Math.floor((this.formHeight - 49) / 48);  //表头高度49px，每一行高度48px;
         }
 
          mounted(): void {

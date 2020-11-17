@@ -2,17 +2,21 @@
   <div class="user" ref="user">
     <div class="d-flex jc-between searchBar" style="margin:20px 32px;"  ref="searchBar">
           <div class="d-flex ai-center">
-              <normalInput v-model="inputValue" placeholder="请输入关键字"></normalInput>
-              <div class="pmbtn primary" style="margin-left:10px">
+              <normalInput v-model="supplyName" placeholder="请输入办公用品名称"></normalInput>
+              <div class="pmbtn primary" style="margin-left:10px" @click="getSuppliesByName">
                   <i class="iconfont iconsousuo"></i>查询
               </div>
           </div>
           <div>
-         
-          <div class="pmbtn primary" >
+           <div class="pmbtn primary"  @click="$router.push({name:'新增入库'})">
               <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
-              新增模板
+              新增入库
           </div>
+          <div class="pmbtn primary" style="margin-left:10px" @click="$router.push({name:'新增出库'})">
+              <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
+              新增出库
+          </div>
+          
         </div>
     </div>
 
@@ -32,34 +36,46 @@
                 <el-table-column
                     type="selection"
                     label=""
-                    width="80px"
+                    width="150px"
                     align="center"
             >
             </el-table-column>
                 <el-table-column
                         prop="name"
-                        width="200px"
-                        label="流程名称"
+                        label="办公用品名称"
+                        width="250px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                  <el-table-column
-                        prop="process"
-                        label="审批流程"
+                        prop="username"
+                        label="规格"
+                        width="220px"
                         show-overflow-tooltip
+                >
+                </el-table-column>
+                 <el-table-column
+                        prop="role"
+                        label="单位"
+                        min-width="250px"
+                        show-overflow-tooltip
+                >
+                </el-table-column>
+                <el-table-column
+                        prop="department"
+                        label="在库数量"
+                        min-width="126px"
                 >
                 </el-table-column>
                 
                <el-table-column
-                    width="300px"
-                    align="center"
                     label="操作"
+                    align="center"
+                    min-width="200px"
             >
                 <template slot-scope="{row,$index}">
-                    <font class="fontBtn">启用</font>
-                    <font class="fontBtn">停用</font>
-                    <font class="fontBtn">修改</font>
-                    <font class="fontBtn-delete">删除</font>
+                    <font class="fontBtn">出库</font>
+                    <font class="fontBtn">入库</font>
                 </template>
             </el-table-column>
             </el-table>
@@ -70,18 +86,21 @@
                 />
             </div>
         </div>
+
+
   </div>
 </template>
 
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator";
-
+    import { supplyApi } from '@oa/api'
 
     @Component({})
     export default class workplaceMain extends Vue {
         no: boolean = false;
         model1: string = '';
-        inputValue = '';
+        supplyName = '';
+        supplyList = []
         orderState: string = '';
         formHeight: number =600
         pages: any = {
@@ -91,14 +110,15 @@
         }
         tableData:Array<object> = [
           {
-            name:'外部来文',
-            process:'收文管理员-XX主任-收文管理员-XX主任'
-          },
-          {
-            name:'自办件',
-            process:'收文管理员-XX主任-XX主任'
-          },
-
+            name:'张原',
+            username:'zhang',
+            role:'管理员',
+            telephone:'1234567',
+            cellphone:'123456787',
+            department:'应用二部',
+            position:'engineer instructors',
+            workplace:'xxx',
+          }
         ]
         orderList:Array<object>=[];
         orderStateList: any = [
@@ -125,6 +145,26 @@
 
         getPage() {
 
+        }
+
+      async  getSuppliesByName(){
+
+            const params = {
+                name:this.supplyName,
+                pageSize:this.pages.pageSize,
+                pageNum:this.pages.pageNum
+            }
+            try {
+                const res = supplyApi.getSupplies(params);
+                // const url = 
+                // debugger
+                // const res = this.$http('/oa/upplies/page',{params})
+                console.log(111)
+                
+            } catch (error) {
+                console.log(error)
+                this.supplyList = [];
+            }
         }
 
         setPageSize(){

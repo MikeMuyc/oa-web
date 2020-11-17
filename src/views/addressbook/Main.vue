@@ -33,7 +33,7 @@
         <!-- table -->
         <div class="item">
             <el-table
-                    :data="orderList"
+                    :data="tableData"
                     class="myWisdomTable"
                     align="center"
                     :height="formHeight"
@@ -44,7 +44,7 @@
                     暂无内容
                 </template>
                 <el-table-column
-                        header-align="center"
+                        align="center"
                         prop="name"
                         label="姓名"
                         width="100px"
@@ -53,7 +53,7 @@
                 </el-table-column>
 
                 <el-table-column
-                        header-align="center"
+                        align="center"
                         prop="department"
                         label="处（科）室"
                         min-width="126px"
@@ -62,12 +62,14 @@
                 </el-table-column>
                 <el-table-column
                         prop="position"
+                        align="center"
                         label="职务"
                         min-width="92px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
+                        align="center"
                         prop="role"
                         label="角色"
                         min-width="132px"
@@ -75,6 +77,7 @@
                 >
                 </el-table-column>
                 <el-table-column
+                        align="center"
                         prop="workplace"
                         label="办公地址"
                         min-width="132px"
@@ -82,6 +85,7 @@
                 >
                 </el-table-column>
                 <el-table-column
+                        align="center"
                         prop="telephone"
                         label="办公室电话"
                         min-width="132px"
@@ -89,6 +93,7 @@
                 >
                 </el-table-column>
                 <el-table-column
+                        align="center"
                         prop="cellphone"
                         label="手机号"
                         min-width="132px"
@@ -96,6 +101,7 @@
                 >
                 </el-table-column>
                 <el-table-column
+                        align="center"
                         header-align="center"
                         prop="email"
                         label="电子邮箱"
@@ -131,6 +137,19 @@
             pageNum: 1,
             totalElements:0
         }
+        tableData:Array<object> = [
+          {
+            name:'张原',
+            username:'zhang',
+            role:'管理员',
+            telephone:'1234567',
+            cellphone:'123456787',
+            department:'应用二部',
+            position:'engineer instructors',
+            workplace:'xxx',
+            email:'123@edu.cn'
+          }
+        ]
         orderList:Array<object>=[];
         orderStateList: any = [
             {
