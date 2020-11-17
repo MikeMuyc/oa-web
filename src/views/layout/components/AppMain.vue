@@ -16,11 +16,19 @@
                         机构信息更新
                     </div>
                 </div>
+                    <div slot="rightSide"  v-if="routeName === '权限管理'">
+                    <div class="pmbtn primary" style="margin-right:10px">
+                        <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
+                        创建角色
+                    </div>
+                    <div class="pmbtn primary">
+                        确定
+                    </div>
+                </div>
             </NavBread>
             <vue-perfect-scrollbar class="routerView">
                 <router-view class=""></router-view>
             </vue-perfect-scrollbar>
-
         </div>
     </div>
 </template>

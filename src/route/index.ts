@@ -2,16 +2,20 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import notice from './notice';
 import addressbook from './addressbook';
+import management from './management';
+import supplies from './supplies';
+import { component } from 'vue/types/umd';
 Vue.use(Router);
-
 export default new Router({
     routes: [
-
         {
             path: '/login',
             component: () => import('@oa/views/Login.vue'),
         },
-
+        {
+            path: '',
+           redirect:'main/AppMain'
+        },
         { //懒加载
             path: '/main',
             redirect: 'main/AppMain',
@@ -48,6 +52,8 @@ export default new Router({
 
                         },
                         ...addressbook,
+                        ...management,
+                        ...supplies
 
                     ]
                 },
@@ -61,15 +67,25 @@ export default new Router({
 
                             component: () => import('@oa/views/notice/addNotice.vue'),
                         },
+                        {
+                            name: '新增出库',
+                            path: 'pushOut',
+
+                            component: () => import('@oa/views/supplies/PushOut.vue')
+                        },
+                        {
+                            name: '新增入库',
+                            path: 'pushIn',
+
+                            component: () => import('@oa/views/supplies/PushIn.vue')
+                        },
+
                     ]
                 },
-
-            ]
-        },
 
         {
             path: '/*',
             redirect: '/main',
-        },
-    ]
+        }]
+    }]
 });

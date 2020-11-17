@@ -39,10 +39,20 @@ Vue.use(VueOl);
 Vue.use(plugin);
 
 
+if (process.env.NODE_ENV === "development") {
+    axios.defaults.baseURL = "./api";
+    Vue.prototype.downloadURL = "http://172.18.13.99:6085";
+    Vue.prototype.$uploadUrl = "/api"
+}else{
+    Vue.prototype.downloadURL = ""
+    Vue.prototype.$uploadUrl = ""
+}
+
 
 Vue.config.productionTip = false;
+import axios from 'axios'
 
-
+Vue.prototype.$http = axios
 
 new Vue({
     router,

@@ -35,7 +35,7 @@
                 <span class="iconfont iconbianzu" style="font-size:20px;margin-right:10px"></span>
                 <span>通讯录</span>
             </MenuItem>
-            <MenuItem name="1-9" to="/main/">
+            <MenuItem name="1-9" :to="{name:'办公用品管理'}">
                 <span class="iconfont iconbangongyongpin" style="font-size:20px;margin-right:10px"></span>
                 <span>办公用品管理</span>
             </MenuItem>
@@ -44,11 +44,11 @@
                     <span class="iconfont iconxitongguanli" style="font-size:20px;margin-right:10px"></span>
                     系统管理
                 </template>
-                <MenuItem name="1-8-1">权限管理</MenuItem>
-                <MenuItem name="1-8-2">用户管理</MenuItem>
-                <MenuItem name="1-8-3">流程管理</MenuItem>
+                <MenuItem name="1-8-1" :to="{name:'权限管理'}">权限管理</MenuItem>
+                <MenuItem name="1-8-2" :to="{name:'用户管理'}">用户管理</MenuItem>
+                <MenuItem name="1-8-3" :to="{name:'流程管理'}">流程管理</MenuItem>
             </Submenu>
-            <MenuItem name="1-9" :to="{name:'标准页'}">
+            <MenuItem name="1-10" :to="{name:'标准页'}">
                 <span>标准页</span>
             </MenuItem>
         </Menu>
