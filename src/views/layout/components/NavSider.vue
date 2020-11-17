@@ -9,7 +9,7 @@
                 <span class="iconfont icongongzuoshenpi" style="font-size:20px;margin-right:10px"></span>
                 <span>工作审批</span>
             </MenuItem>
-            <MenuItem name="通知公告" :to="{name:'公告列表'}">
+            <MenuItem name="通知公告" :to="{name:'通知公告'}">
                 <span class="iconfont icontongzhigonggao" style="font-size:20px;margin-right:10px"></span>
                 <span>通知公告</span>
             </MenuItem>
