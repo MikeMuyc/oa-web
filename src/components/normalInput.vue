@@ -5,7 +5,7 @@
         name: "normalInput",
         model: {
             prop: 'value',
-            event:  `decorate`,
+            event: `decorate`,
         },
         props:{
             disabled:{
@@ -22,7 +22,8 @@
             type:{
                 type:String,
                 default:"text",
-                //text,number,float,2fixed,allNumber,allFloat,all2fixed;分别代表字符串，正整数，正数,正数（2位小数），所有整数，所有数，所有数（保留2位小数）
+                //text,number,float,2fixed,allNumber,allFloat,all2fixed;分别代表字符串，正整数，正数,正数（2位小数），所有整数，所有数，所有数（保留2位小数）.
+                //type=search 时，会显示搜索图标
             },
             value:{},
         },

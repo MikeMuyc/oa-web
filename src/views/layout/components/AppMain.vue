@@ -3,8 +3,8 @@
         <NavSider/>
         <div class="main-content ">
             <NavBread>
-                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'" @click="$router.push({name:'新增公告'})">
-                    <i class="iconfont iconxinzeng"></i>新增公告
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'" @click="$router.push({name:'新建公告'})">
+                    <i class="iconfont iconxinzeng"></i>新建公告
                 </div>
                 <div slot="rightSide"  v-if="routeName === '通讯录'">
                     <div class="pmbtn primary" style="margin-right:10px">
@@ -24,6 +24,10 @@
                     <div class="pmbtn primary">
                         确定
                     </div>
+                </div>
+
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '发文管理'" @click="$router.push({name:'新建发文'})">
+                    <i class="iconfont iconxinzeng"></i>新建发文
                 </div>
             </NavBread>
             <vue-perfect-scrollbar class="routerView">

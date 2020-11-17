@@ -30,18 +30,15 @@ body {
     padding: 0 20px;
     width: 100%;
     box-shadow: 0px 0px 13px rgba(28, 58, 96, 0.15);
-    padding:0 20px;
-    width:100%;
-
+    i{
+        font-style: normal;
+    }
     .title {
-
         font-size: 20px;
-        font-family: Source Han Sans CN;
         font-weight: 400;
         line-height: 25px;
         color: #333333;
         flex: 1;
-
     }
 
     .suc-menu {
@@ -107,6 +104,10 @@ $value in $flex-ai {
     padding-right: 20px;
 }
 
+/**iview 样式调整**/
+.ivu-input{
+    font-size: 14px;
+}
 
 //通用按钮样式
 .pmbtn {
@@ -165,7 +166,14 @@ $value in $flex-ai {
             box-shadow: 0 2px 5px #454e77 inset;
         }
     }
-
+    &.change{
+        border: 1px solid #000;
+        @include base-color();
+        @include border-color();
+        &:active{
+            box-shadow: 0 2px 5px rgba(32,100,207,0.15) inset;
+        }
+    }
     &.disable {
         border-color: #c6c9ce;
         color: #a0a5a9;
@@ -176,10 +184,12 @@ $value in $flex-ai {
         }
 
         &:hover {
-
+            color: #a0a5a9;
+            border-color: #c6c9ce;
         }
 
         &:active {
+            border-color: #c6c9ce;
             box-shadow: none;
         }
     }
@@ -195,10 +205,14 @@ $value in $flex-ai {
         }
 
         &:hover {
-
+            color: #fff;
+            background-color: #a0a5a9;
+            border-color: #a0a5a9;
         }
 
         &:active {
+            color: #fff;
+            border-color: #a0a5a9;
             box-shadow: none;
         }
     }
@@ -213,10 +227,14 @@ $value in $flex-ai {
         }
 
         &:hover {
+            background-color: $error-color;
+            border: 1px solid $error-color;
             color: #fff;
         }
 
         &:active {
+            background-color: $error-color;
+            border: 1px solid $error-color;
             box-shadow: 0 2px 5px #D24C48 inset;
         }
     }
@@ -224,6 +242,11 @@ $value in $flex-ai {
 
 .fontBtn{
     @include base-color();
+    margin: 0 5px;
+    cursor: pointer;
+}
+.fontBtn-warning{
+    color: $warning-color;
     margin: 0 5px;
     cursor: pointer;
 }
@@ -245,10 +268,117 @@ $value in $flex-ai {
     }
 
 }
-
+//页脚
 .pageBottom{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px;
+}
+//tab搜索
+.tabSelect{
+    display: inline-flex;
+    height: 32px;
+    border: 1px solid #000;
+    @include base-border();
+    border-radius: 2px;
+    overflow: hidden;
+    .option{
+        display: inline-flex;
+        align-items: center;
+        min-width: 70px;
+        flex:none;
+        padding: 0 20px;
+        border-right: 1px solid #000;
+        @include base-border();
+        cursor: pointer;
+        &.active{
+            @include base-background();
+            color: #fff;
+        }
+        &:last-child{
+            border-right: 0;
+        }
+    }
+}
+/** 新增页面通用样式 **/
+.addModule{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    .backLine{
+        height: 60px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            .iconfont{
+                margin-right: 15px;
+            }
+            display: inline-flex;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .right{
+            display: inline-flex;
+        }
+    }
+    .content{
+        width: 960px;
+        height: 100%;
+        padding-bottom:30px;
+        .whiteSpace {
+            background-color: #fff;
+            height: calc(100% - 60px);
+            padding: 32px;
+            padding-bottom: 10px;
+            .title{
+                font-size: 20px;
+                height: 20px;
+                line-height: 20px;
+                margin-bottom: 32px;
+            }
+            .label{
+                margin-bottom: 12px;
+            }
+            .input{
+                width: 100%;
+                margin-bottom: 32px;
+            }
+            .info{
+                margin-bottom: 32px;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
+
+//**过渡动画效果**//
+.leftSlide-enter,.leftSlide-leave-to
+{
+    transform: translateX(-600px);
+    opacity: 0;
+}
+
+
+.leftSlide-enter-active {
+    transition: all .3s ease;
+}
+.leftSlide-leave-active{
+    transition: all .3s ease;
+}
+
+.rightSlide-enter,.rightSlide-leave-to
+{
+    transform: translateX(600px);
+    opacity: 0;
+}
+
+.rightSlide-enter-active {
+    transition: all .3s ease;
+}
+.rightSlide-leave-active{
+    transition: all .3s ease;
 }

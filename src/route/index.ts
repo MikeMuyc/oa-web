@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import notice from './notice';
+import document from './document';
 import addressbook from './addressbook';
 import management from './management';
 import supplies from './supplies';
@@ -12,10 +12,7 @@ export default new Router({
             path: '/login',
             component: () => import('@oa/views/Login.vue'),
         },
-        {
-            path: '',
-           redirect:'main/AppMain'
-        },
+
         { //懒加载
             path: '/main',
             redirect: 'main/AppMain',
@@ -40,7 +37,7 @@ export default new Router({
                         },
 
                         {
-                            name: '公告列表',
+                            name: '通知公告',
                             path: 'noticeList',
 
                             component: () => import('@oa/views/notice/noticeList.vue'),
@@ -52,6 +49,7 @@ export default new Router({
 
                         },
                         ...addressbook,
+                        ...document,
                         ...management,
                         ...supplies
 
@@ -62,11 +60,31 @@ export default new Router({
                     component: () => import('@oa/views/layout/components/noSlide_Main.vue'),
                     children:[
                         {
-                            name: '新增公告',
+                            name: '新建公告',
                             path: 'addNotice',
 
                             component: () => import('@oa/views/notice/addNotice.vue'),
                         },
+                        {
+                            name: '新建日报',
+                            path: 'addDaily',
+
+                            component: () => import('@oa/views/dailyReport/addDaily.vue'),
+                        },
+                        {
+                            name: '新建周报',
+                            path: 'addWeekly',
+
+                            component: () => import('@oa/views/dailyReport/addWeekly.vue'),
+                        },
+                        {
+                            name: '新建发文',
+                            path: 'addDocument',
+
+                            component: () => import('@oa/views/document/addDocument.vue'),
+                        },
+                    ]
+                },
                         {
                             name: '新增出库',
                             path: 'pushOut',
@@ -86,6 +104,6 @@ export default new Router({
         {
             path: '/*',
             redirect: '/main',
-        }]
-    }]
+        },
+    ]
 });

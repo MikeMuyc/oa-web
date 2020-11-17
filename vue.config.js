@@ -35,11 +35,20 @@ module.exports = {
     devServer: {
         port:8062,
         proxy: {
-            "/api/": {
+            //汪刚毅
+            "/apw/": {
+                target: "http://172.18.0.164",
+                changeOrigin: true,
+                pathRewrite: {
+                    "^/apw": ""
+                }
+            },
+            //张虎达
+            "/apz/": {
                 target: "http://172.18.0.164:80",
                 changeOrigin: true,
                 pathRewrite: {
-                    "^/api": ""
+                    "^/apz": ""
                 }
             }
         }

@@ -1,401 +1,444 @@
 <template>
     <div id="orderList">
 
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">01</div>
-                        <div class="text">字体</div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">01</div>
+                    <div class="text">字体</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item firstTitle">一级标题</div>
+                    <div class="item firstTitle">.firstTitle</div>
+                </div>
+                <div class="aline">
+                    <div class="item secondTitle">二级标题</div>
+                    <div class="item secondTitle">.secondTitle</div>
+                </div>
+                <div class="aline">
+                    <div class="item">正常文字</div>
+                    <div class="item">#30374a</div>
+                </div>
+                <div class="aline">
+                    <div class="item" style="color: #7c8185;">次级文字</div>
+                    <div class="item" style="color: #595959;">$second-font-color</div>
+                </div>
+                <div class="aline">
+                    <div class="item" style="color: #a0a5a9;">辅助文字</div>
+                    <div class="item" style="color: #8C8C8C;">$third-font-color</div>
+                </div>
+                <div class="aline">
+                    <div class="item" style="color: #BFBFBF;">提示文字</div>
+                    <div class="item" style="color: #BFBFBF;">$tips-color</div>
+                </div>
+            </div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">02</div>
+                    <div class="text">颜色</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="colorBox normal">主题色<br/>#2064CF</div>
+                </div>
+                <div class="aline">
+                    <div class="colorBox success">成功<br/>$success-color</div>
+                    <div class="colorBox warning">警告<br/>$warning-color</div>
+                    <div class="colorBox error">错误<br/>$error-color</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">03</div>
+                    <div class="text">按钮</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn primary">
+                            <i class="iconfont iconsousuo"></i>搜索
+                        </div>
+                    </div>
+                    <div class="item btn">确认；搜索；下一步...</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn">取消</div>
+                    </div>
+                    <div class="item btn">取消；页面跳转；</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn change">上传</div>
+                    </div>
+                    <div class="item btn">上传；导入；打开弹窗</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn disable">打开</div>
+                    </div>
+                    <div class="item btn">禁用；无效</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn primary disable">打开</div>
+                    </div>
+                    <div class="item btn">禁用；无效</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn delete">删除</div>
+                    </div>
+                    <div class="item btn">删除</div>
+                </div>
+            </div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">04</div>
+                    <div class="text">输入框</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item">
+                        <normalInput v-model="name" placeholder="请输入姓名"></normalInput>
+                    </div>
+                    <div class="item btn" @click="conso(`name`)">
+                        默认，type="text",字符串
                     </div>
                 </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item firstTitle">一级标题</div>
-                        <div class="item firstTitle">.firstTitle</div>
+                <div class="aline">
+                    <div class="item">
+                        <normalInput type="number" v-model="valNumber" placeholder="请输入正整数"></normalInput>
                     </div>
-                    <div class="aline">
-                        <div class="item secondTitle">二级标题</div>
-                        <div class="item secondTitle">.secondTitle</div>
+                    <div class="item btn" @click="conso(`valNumber`)">
+                        正整数，type="number", 大于等于0的整数
                     </div>
-                    <div class="aline">
-                        <div class="item">正常文字</div>
-                        <div class="item">#30374a</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <normalInput type="float" v-model="valFloat" placeholder="请输入正数"></normalInput>
                     </div>
-                    <div class="aline">
-                        <div class="item" style="color: #7c8185;">次级文字</div>
-                        <div class="item" style="color: #595959;">$second-font-color</div>
+                    <div class="item btn" @click="conso(`valFloat`)">
+                        正数，type="float", 大于等于0的数
                     </div>
-                    <div class="aline">
-                        <div class="item" style="color: #a0a5a9;">辅助文字</div>
-                        <div class="item" style="color: #8C8C8C;">$third-font-color</div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <normalInput type="allNumber" v-model="valAllNumber" placeholder="请输入整数"></normalInput>
                     </div>
-                    <div class="aline">
-                        <div class="item" style="color: #BFBFBF;">提示文字</div>
-                        <div class="item" style="color: #BFBFBF;">$tips-color</div>
+                    <div class="item btn" @click="conso(`valAllNumber`)">
+                        所有整数，type="allNumber"
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <normalInput type="allNumber" placeholder="禁止输入" :disabled="true"></normalInput>
+                    </div>
+                    <div class="item btn">
+                        禁止输入
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <normalInput type="search" placeholder="搜索"></normalInput>
+                    </div>
+                    <div class="item btn">
+                        搜索框，搜索事件：@enter
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <textarea></textarea>
+                    </div>
+                    <div class="item btn">
+                        文本域
                     </div>
                 </div>
             </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">02</div>
-                        <div class="text">颜色</div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">05</div>
+                    <div class="text">下拉菜单</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item">
+                        <mixSelect
+                                v-model="estateId"
+                                :selectList="SceneList"
+                                labelName="name"
+                                valueName="val"
+                                childrenName="children"
+                                placeholder="所属项目"
+                                @sentTo="projectSearch"
+                        >
+                        </mixSelect>
+                    </div>
+                    <div class="item">
+                        <mixSelect
+                                v-model="orderState"
+                                :selectList="orderStateList"
+                                labelName="name"
+                                valueName="id"
+                                placeholder="工单状态"
+                                @sentItem="orderStateSearch"
+                        >
+                        </mixSelect>
+                    </div>
+                    <div class="item btn">
+                        mixSelect组件，支持多级菜单
                     </div>
                 </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="colorBox normal">主题色<br/>#2064CF</div>
+                <div class="aline">
+                    <div class="item" style="width: 400px">
+                        <mixSelect
+                                v-model="estateId"
+                                :selectList="SceneList2"
+                                labelName="name"
+                                valueName="val"
+                                childrenName="children"
+                                placeholder="所属项目"
+                                :multiple="true"
+                                @sentItem="getmultiple"
+                        >
+                        </mixSelect>
                     </div>
-                    <div class="aline">
-                        <div class="colorBox success">成功<br/>$success-color</div>
-                        <div class="colorBox warning">警告<br/>$warning-color</div>
-                        <div class="colorBox error">错误<br/>$error-color</div>
+                    <div class="item btn">
+                        多级，多选菜单用法，multiple="true"
+                    </div>
+                </div>
+
+                <div class="aline">
+                    <div class="item">
+                        <normalInput v-model="name" placeholder="请输入名称"></normalInput>
+                    </div>
+                    <div class="item">
+                        <div class="pmbtn primary">
+                            <i class="iconfont iconsousuo"></i>搜索
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="pmbtn">
+                            <i class="iconfont iconshuaxin"></i>重置
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="pmbtn primary">
+                            <i class="iconfont iconxinzeng"></i>新增
+                        </div>
                     </div>
 
                 </div>
             </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">03</div>
-                        <div class="text">按钮</div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn primary">
-                                <i class="iconfont iconsousuo"></i>搜索
-                            </div>
-                        </div>
-                        <div class="item btn">确认；搜索；下一步...</div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn">取消</div>
-                        </div>
-                        <div class="item btn">取消；页面跳转；打开弹窗；导入</div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn disable">打开</div>
-                        </div>
-                        <div class="item btn">禁用；无效</div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn primary disable">打开</div>
-                        </div>
-                        <div class="item btn">禁用；无效</div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn delete">删除</div>
-                        </div>
-                        <div class="item btn">删除</div>
-                    </div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">06</div>
+                    <div class="text">表格</div>
                 </div>
             </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">04</div>
-                        <div class="text">输入框</div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput v-model="name" placeholder="请输入姓名"></normalInput>
-                        </div>
-                        <div class="item btn" @click="conso(`name`)">
-                            默认，type="text",字符串
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput type="number" v-model="valNumber" placeholder="请输入正整数"></normalInput>
-                        </div>
-                        <div class="item btn" @click="conso(`valNumber`)">
-                            正整数，type="number", 大于等于0的整数
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput type="float" v-model="valFloat" placeholder="请输入正数"></normalInput>
-                        </div>
-                        <div class="item btn" @click="conso(`valFloat`)">
-                            正数，type="float", 大于等于0的数
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput type="allNumber" v-model="valAllNumber" placeholder="请输入整数"></normalInput>
-                        </div>
-                        <div class="item btn" @click="conso(`valAllNumber`)">
-                            所有整数，type="allNumber"
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput type="allNumber" placeholder="禁止输入" :disabled="true"></normalInput>
-                        </div>
-                        <div class="item btn">
-                            禁止输入
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput type="search" placeholder="搜索" ></normalInput>
-                        </div>
-                        <div class="item btn">
-                            搜索框，搜索事件：@enter
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <textarea></textarea>
-                        </div>
-                        <div class="item btn">
-                            文本域
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">05</div>
-                        <div class="text">下拉菜单</div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item">
-                            <mixSelect
-                                    v-model="estateId"
-                                    :selectList="SceneList"
-                                    labelName="name"
-                                    valueName="val"
-                                    childrenName="children"
-                                    placeholder="所属项目"
-                                    @sentTo="projectSearch"
+            <div class="right">
+                <div class="aline">
+                    <div class="item" style="width: 860px;">
+                        <el-table
+                                :data="orderList"
+                        >
+                            <template slot="empty">
+                                <img src="@oa/assets/暂无数据.png">
+                                <br>
+                                暂无内容
+                            </template>
+                            <el-table-column
+                                    prop="id"
+                                    label="工单编号"
+                                    width="100px"
+                                    show-overflow-tooltip
                             >
-                            </mixSelect>
-                        </div>
-                        <div class="item">
-                            <mixSelect
-                                    v-model="orderState"
-                                    :selectList="orderStateList"
-                                    labelName="name"
-                                    valueName="id"
-                                    placeholder="工单状态"
-                                    @sentItem="orderStateSearch"
-                            >
-                            </mixSelect>
-                        </div>
-                        <div class="item btn">
-                            mixSelect组件，支持多级菜单
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item" style="width: 400px">
-                            <mixSelect
-                                    v-model="estateId"
-                                    :selectList="SceneList2"
-                                    labelName="name"
-                                    valueName="val"
-                                    childrenName="children"
-                                    placeholder="所属项目"
-                                    :multiple="true"
-                                    @sentItem="getmultiple"
-                            >
-                            </mixSelect>
-                        </div>
-                        <div class="item btn">
-                           多级，多选菜单用法，multiple="true"
-                        </div>
-                    </div>
+                            </el-table-column>
 
-                    <div class="aline">
-                        <div class="item">
-                            <normalInput v-model="name" placeholder="请输入名称"></normalInput>
-                        </div>
-                        <div class="item">
-                            <div class="pmbtn primary">
-                                <i class="iconfont iconsousuo"></i>搜索
-                            </div>
+                            <el-table-column
+                                    prop="project"
+                                    label="所属项目"
+                                    min-width="126px"
 
-                        </div>
-                        <div class="item">
-                            <div class="pmbtn">
-                                <i class="iconfont iconshuaxin"></i>重置
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pmbtn primary">
-                                <i class="iconfont iconxinzeng"></i>新增
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">06</div>
-                        <div class="text">表格</div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item" style="width: 860px;">
-                            <el-table
-                                    :data="orderList"
                             >
-                                <template slot="empty" >
-                                    <img src="@oa/assets/暂无数据.png">
-                                    <br>
-                                    暂无内容
+                            </el-table-column>
+                            <el-table-column
+                                    prop="initiatorName"
+                                    label="下单人"
+                                    min-width="92px"
+                                    show-overflow-tooltip
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="contact"
+                                    label="联系方式"
+                                    min-width="132px"
+                                    show-overflow-tooltip
+                            >
+                            </el-table-column>
+
+
+                            <el-table-column
+                                    label="操作"
+                                    align="right"
+                                    width="120px"
+                            >
+                                <template slot-scope="{row,$index}">
+                                    <font class="fontBtn">详情</font>
+                                    <font class="fontBtn-delete">删除</font>
                                 </template>
-                                <el-table-column
-                                        prop="id"
-                                        label="工单编号"
-                                        width="100px"
-                                        show-overflow-tooltip
-                                >
-                                </el-table-column>
-
-                                <el-table-column
-                                        prop="project"
-                                        label="所属项目"
-                                        min-width="126px"
-
-                                >
-                                </el-table-column>
-                                <el-table-column
-                                        prop="initiatorName"
-                                        label="下单人"
-                                        min-width="92px"
-                                        show-overflow-tooltip
-                                >
-                                </el-table-column>
-                                <el-table-column
-                                        prop="contact"
-                                        label="联系方式"
-                                        min-width="132px"
-                                        show-overflow-tooltip
-                                >
-                                </el-table-column>
-
-
-                                <el-table-column
-                                        label="操作"
-                                        align="right"
-                                        width="120px"
-                                >
-                                    <template slot-scope="{row,$index}">
-                                        <font class="fontBtn">详情</font>
-                                        <font class="fontBtn-delete">删除</font>
-                                    </template>
-                                </el-table-column>
-                            </el-table>
-                        </div>
-
+                            </el-table-column>
+                        </el-table>
                     </div>
-                    <div class="aline">
-                        <div class="item" style="width: 240px;">
-                            表格组件使用element-ui，页脚使用iview
-                        </div>
-                        <div class="item" style="width: 600px;">
-                            <Page show-elevator show-total :page-size="pages.pageSize" :current="pages.pageNum"
-                                  :total="pages.totalElements"
-                                  @on-change="getPage"/>
-                        </div>
 
+                </div>
+                <div class="aline">
+                    <div class="item" style="width: 240px;">
+                        表格组件使用element-ui，页脚使用iview
+                    </div>
+                    <div class="item" style="width: 600px;">
+                        <Page show-elevator show-total :page-size="pages.pageSize" :current="pages.pageNum"
+                              :total="pages.totalElements"
+                              @on-change="getPage"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">07</div>
+                    <div class="text">选择框</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item" style="width:500px;">
+                        <CheckboxGroup v-model="fruit">
+                            <Checkbox label="香蕉"></Checkbox>
+                            <Checkbox label="苹果"></Checkbox>
+                            <Checkbox label="西瓜"></Checkbox>
+                        </CheckboxGroup>
+                    </div>
+                    <div class="item btn">
+                        多选框使用iview
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="item" style="width: 500px;">
+                        <RadioGroup v-model="phone">
+                            <Radio label="apple">
+                                <Icon type="logo-apple"></Icon>
+                                <span>Apple</span>
+                            </Radio>
+                            <Radio label="android">
+                                <Icon type="logo-android"></Icon>
+                                <span>Android</span>
+                            </Radio>
+                            <Radio label="windows">
+                                <Icon type="logo-windows"></Icon>
+                                <span>Windows</span>
+                            </Radio>
+                        </RadioGroup>
+                    </div>
+                    <div class="item btn">
+                        单选框使用iview
                     </div>
                 </div>
             </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">07</div>
-                        <div class="text">选择框</div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">08</div>
+                    <div class="text">弹窗</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn" @click="deleteSomething">删除</div>
+                    </div>
+                    <div class="item btn">
+                        操作确认，使用element-ui
                     </div>
                 </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item" style="width:500px;">
-                            <CheckboxGroup v-model="fruit">
-                                <Checkbox label="香蕉"></Checkbox>
-                                <Checkbox label="苹果"></Checkbox>
-                                <Checkbox label="西瓜"></Checkbox>
-                            </CheckboxGroup>
-                        </div>
-                        <div class="item btn">
-                            多选框使用iview
-                        </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn primary" @click="openDialog">打开弹窗</div>
                     </div>
-                    <div class="aline">
-                        <div class="item" style="width: 500px;">
-                            <RadioGroup v-model="phone">
-                                <Radio label="apple">
-                                    <Icon type="logo-apple"></Icon>
-                                    <span>Apple</span>
-                                </Radio>
-                                <Radio label="android">
-                                    <Icon type="logo-android"></Icon>
-                                    <span>Android</span>
-                                </Radio>
-                                <Radio label="windows">
-                                    <Icon type="logo-windows"></Icon>
-                                    <span>Windows</span>
-                                </Radio>
-                            </RadioGroup>
-                        </div>
-                        <div class="item btn" >
-                            单选框使用iview
-                        </div>
+                    <div class="item btn">
+                        弹窗，使用element-ui
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="item">
+                        <div class="pmbtn primary" @click="openMessage">提示信息</div>
+                    </div>
+                    <div class="item btn btn">
+                        提示信息，使用element-ui，this.$message.info(`这里是提示`)
                     </div>
                 </div>
             </div>
-            <div class="square">
-                <div class="left">
-                    <div class="center">
-                        <div class="num">08</div>
-                        <div class="text">弹窗</div>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn" @click="deleteSomething">删除</div>
-                        </div>
-                        <div class="item btn">
-                            操作确认，使用element-ui
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn primary" @click="openDialog">打开弹窗</div>
-                        </div>
-                        <div class="item btn">
-                            弹窗，使用element-ui
-                        </div>
-                    </div>
-                    <div class="aline">
-                        <div class="item">
-                            <div class="pmbtn primary" @click="openMessage">提示信息</div>
-                        </div>
-                        <div class="item btn btn">
-                            提示信息，使用element-ui，this.$message.info(`这里是提示`)
-                        </div>
-                    </div>
+        </div>
+
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">09</div>
+                    <div class="text">tab搜索</div>
                 </div>
             </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item">
+                        <div class="tabSelect">
+                            <div class="option active" >日报</div>
+                            <div class="option">周报</div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <div class="square">
+            <div class="left">
+                <div class="center">
+                    <div class="num">10</div>
+                    <div class="text">时间日期选择</div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="aline">
+                    <div class="item">
 
+                    </div>
+                    <div class="item">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
 
         <el-dialog
@@ -408,7 +451,7 @@
                 <div class="iconColumn"></div>
                 新增工单
             </div>
-            <div class="MuModalContent" >
+            <div class="MuModalContent">
                 <div class="aline">
                     <div class="item btn">房间代码：</div>
                     <div class="item">
@@ -430,7 +473,7 @@
                 <div class="aline">
                     <div class="item btn">房间代码：</div>
                     <div class="item">
-                        <normalInput style="width: 200px" placeholder="房间代码"></normalInput>
+                        <normalInput  style="width: 200px" placeholder="房间代码"></normalInput>
                     </div>
                 </div>
             </div>
@@ -444,32 +487,25 @@
 </template>
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator";
-    import {Spin, Select, Option, Icon, Page, CheckboxGroup, RadioGroup, Radio, Checkbox} from 'view-design'
+
 
 
     @Component({
         components: {
-            Icon,
-            Spin,
-            Page,
-            Select,
-            Option,
-            CheckboxGroup,
-            RadioGroup,
-            Radio,
-            Checkbox,
+
         }
     })
 
 
     export default class orderList extends Vue {
+        time1:any = '';
         name: any = '';
         valNumber: any = '';
         valFloat: any = '';
         valAllNumber: any = '';
-        fruit:any = [];
-        phone:any = '';
-        dialogVisible:boolean = false;
+        fruit: any = [];
+        phone: any = '';
+        dialogVisible: boolean = false;
         orderList: any = [
             {
                 id: 'c001',
@@ -704,12 +740,12 @@
         ];
 
 
-        tabList:Array<{ name:string }> = [
+        tabList: Array<{ name: string }> = [
             {
-                name:'欠款明细',
+                name: '欠款明细',
             },
             {
-                name:'缴费记录',
+                name: '缴费记录',
             },
         ]
 
@@ -719,35 +755,39 @@
             totalElements: 20,
         };
 
-        tabChange(item:any){
-            console.log(item)
-        }
-        conso(valName:any) {
-            console.log(this[valName] , typeof this[valName])
-        }
-
-        projectSearch(val:any) {
-            console.log(val)
-        }
-        getmultiple(val:any) {
-            console.log(val)
-        }
-
-        orderStateSearch(item:any) {
+        tabChange(item: any) {
             console.log(item)
         }
 
-        getPage(page?:number) {
+        conso(valName: any) {
+            console.log(this[valName], typeof this[valName])
+        }
+
+        projectSearch(val: any) {
+            console.log(val)
+        }
+
+        getmultiple(val: any) {
+            console.log(val)
+        }
+
+        orderStateSearch(item: any) {
+            console.log(item)
+        }
+
+        getPage(page?: number) {
             this.pages.pageNum = page || 1;
             console.log(page)
         }
 
         openDialog() {
-            this.dialogVisible=true
+            this.dialogVisible = true
         }
-        openMessage(){
+
+        openMessage() {
             this.$message.info(`这里是提示信息！`)
         }
+
         deleteSomething() {
             this.$confirm('此操作将永久删除该文件, 是否继续?', '操作提示', {
                 confirmButtonText: '确定',
@@ -763,8 +803,8 @@
             });
         }
 
-        changeTheme(name:string){
-            document.getElementsByTagName('body')[0].style.setProperty('--color','#27C992');
+        changeTheme(name: string) {
+            document.getElementsByTagName('body')[0].style.setProperty('--color', '#27C992');
         }
 
         mounted(): void {
@@ -790,6 +830,7 @@
 
 
         }
+
         .square {
             display: flex;
             padding: 30px;
@@ -853,11 +894,13 @@
             }
         }
     }
+
     .aline {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 10px;
+
         .item {
             padding: 0 20px;
             min-width: 120px;

@@ -4,6 +4,7 @@ import VuePerfectScrollbar from '@oa/plugins/perfect-scrollbar/scroll.vue';
 import mixSelect from '@oa/components/mixSelect/mixSelect.vue';
 import NavBread from '@oa/components/NavBread.vue';
 import normalInput from '@oa/components/normalInput.vue';
+
 //通用方法集合
 const utils = {
     //时间戳转换成自定义字符串
@@ -77,7 +78,6 @@ export default {
         Vue.component('mixSelect', mixSelect);
         Vue.component('NavBread', NavBread);
         Vue.component('normalInput', normalInput);
-
         //将方法集添加到Vue实例上面去
         Vue.prototype.$utils = utils;
 
