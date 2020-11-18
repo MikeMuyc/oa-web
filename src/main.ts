@@ -9,12 +9,14 @@ import plugin from "./utils/suc-plugin";
 
 
 import { utils } from "@suc/ui/index";
-import authox from '@suc/authox/plugins/authox-vue';
+
 import VueOl from '@suc/monch';
 
 
-
+import authox from '@suc/authox/plugins/authox-vue';
 import '@suc/authox/styles/authox.scss';
+
+
 import ViewUI from 'view-design'
 // import "iview/dist/styles/iview.css";
 import 'view-design/dist/styles/iview.css';
@@ -29,6 +31,7 @@ Vue.use(ElementUI);
 
 import './styles/my-theme.less';
 import './styles/index.scss';
+import axios from 'axios'
 
 Vue.use(utils, router);
 
@@ -40,7 +43,7 @@ Vue.use(plugin);
 
 
 if (process.env.NODE_ENV === "development") {
-    axios.defaults.baseURL = "./api";
+    axios.defaults.baseURL = "./apw";
     Vue.prototype.downloadURL = "http://172.18.13.99:6085";
     Vue.prototype.$uploadUrl = "/api"
 }else{
@@ -50,7 +53,7 @@ if (process.env.NODE_ENV === "development") {
 
 
 Vue.config.productionTip = false;
-import axios from 'axios'
+
 
 Vue.prototype.$http = axios
 

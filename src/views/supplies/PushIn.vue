@@ -20,13 +20,14 @@
                 <div class="d-flex ">
                     <div class="d-flex flex-column" style="margin-right:48px">
                         <div class="label"><span class="notnull">*</span>领用人</div>
-                        <normalInput class="input" v-model="model.who" placeholder="请选择部门、人员"></normalInput>
+                        <normalInput class="input" v-model="model.operatorName" placeholder="请选择部门、人员"></normalInput>
                     </div>
                     
                     <div class="d-flex flex-column" style="margin-right:48px">
                         <div class="label"><span class="notnull">*</span>出库时间</div>
                         <el-date-picker
-                        v-model="model.when"
+                        format="yyyy-MM-DD HH:mm:ss"
+                        v-model="model.operateTime"
                         type="date"
                         placeholder="选择日期">
                         </el-date-picker>
@@ -36,7 +37,7 @@
                         <div class="label"><span class="notnull">*</span>关联审批</div>
                         <mixSelect
                             style="width:270px"
-                            v-model="model.fileName"
+                            v-model="model.relateUrl"
                             :selectList="orderStateList"
                             labelName="name"
                             valueName="id"
@@ -52,19 +53,19 @@
                         <div class="label"><span class="notnull">*</span>办公用品名称</div>
                          <mixSelect
                             style="width:270px"
-                            v-model="model.supplyName"
-                            :selectList="orderStateList"
+                            v-model="model.name"
+                            :selectList="supplyList"
                             labelName="name"
                             valueName="id"
                             placeholder="纸"
-                            @sentItem="orderStateSearch"
+                            @sentItem="getSupplyName"
                                     >
                         </mixSelect>
                     </div>
                     
                     <div class="d-flex flex-column" style="margin-right:48px">
                         <div class="label">物品规格</div>
-                        <normalInput class="input" v-model="model.type" placeholder="6号"></normalInput>
+                        <normalInput class="input" v-model="model.specification" placeholder="6号"></normalInput>
                     </div>
 
                     <div class="d-flex flex-column">
@@ -83,36 +84,25 @@
 </template>
 <script lang="ts">
     import {Vue, Component,Watch} from "vue-property-decorator";
+    import dayjs from 'dayjs'
+    import { supplyApi } from '@oa/api'
+import { suppliesIn } from '@oa/api/supplies';
     @Component({})
     export default class PushInPage extends Vue {
          orderState:string='';
-        //  isOk: boolean = true;
+         supplyList:any =[];
          model:any={
              amount:'',
-             type:'',
              unit:'',
-             supplyName:'',
-             fileName:'',
-             who:'',
-             when:''
-         }
-         get isOk(){
-            if(this.model.supplyName&&this.model.who&&this.model.fileName&&this.model.when&&this.model.amount){
-                if(this.numberCheck()){
-                     return true;
-                }
-            }else{
-                return false;
-            }
+             name:'',
+             operatorName:'',
+             operateTime:'',
+             specification:'',
+             relateUrl:''
+            
          }
 
-           
-        numberCheck(){
-            const reg = /^\d{1,}$/;
-            return reg.test(this.model.amount);
-        }
-
-         orderStateList: any = [
+           orderStateList: any = [
             
             {
                 id: '0',
@@ -123,10 +113,51 @@
                 name: '待接单',
             }]
 
-        orderStateSearch(){}
-        submit(){
-            console.log(this.model)
-            this.numberCheck();
+
+
+         get isOk(){
+            if(this.model.name&&this.model.operatorName&&this.model.relateUrl&&this.model.operateTime&&this.model.amount){
+                if(this.numberCheck()){
+                     return true;
+                }
+            }else{
+                return false;
+            }
+         }
+    
+
+        numberCheck(){
+            const reg = /^\d{1,}$/;
+            return reg.test(this.model.amount);
+        }
+
+       async getSupplyName(){
+           const params = {
+               name:this.model.name
+           }
+           try {
+           const res = await supplyApi.getSupplyName(params);
+           this.supplyList = res.data;
+           console.log(this.supplyList);
+           } catch (error) {
+               console.log(error);
+           }
+       }
+
+       orderStateSearch(){}
+       async submit(){
+           console.log(this.model);
+           this.model.operateTime = dayjs(this.model.operateTime).format('YYYY-MM-DD HH:mm:ss');
+           const params = this.model;
+            try {
+                const res = await supplyApi.suppliesIn(params);
+            } catch (error) {
+                
+            }
+        }
+
+        mounted(){
+            this.getSupplyName();
         }
     }
 
