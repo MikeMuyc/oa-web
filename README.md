@@ -10,4 +10,7 @@ npm run serve
 ```
 npm run build
 ```
-
+### preview
+```
+https://mikemuyc.github.io/oa-web/dist/index
+```
