@@ -80,9 +80,9 @@
 
         async uploadFile1(e:any){
             let fd = new FormData();
-            let type = `doc,docx`;
-            let houzhui = e.target.files[0].name.split('.')[1];
-            let bool2 = type.indexOf(houzhui > -1);
+            let type:string = `doc,docx`;
+            let houzhui:string = e.target.files[0].name.split('.')[1];
+            let bool2:boolean = type.indexOf(houzhui) > -1;
             if (!bool2) {
                 this.$message({
                     showClose: true,
@@ -93,7 +93,7 @@
                 fd.append("files ", e.target.files[0]);
 
                 try {
-                    let {data} = await api.upload(fd);
+                    let data:any = await api.upload(fd);
                     console.log(data)
                     this.$message.success(`上传成功！`)
                 } catch (e) {
@@ -104,9 +104,9 @@
         }
         async uploadFile2(e:any){
             let fd = new FormData();
-            let type = `doc,docx`;
-            let houzhui = e.target.files[0].name.split('.')[1];
-            let bool2 = type.indexOf(houzhui > -1);
+            let type:string = `doc,docx`;
+            let houzhui:string = e.target.files[0].name.split('.')[1];
+            let bool2:boolean = type.indexOf(houzhui) > -1;
             if (!bool2) {
                 this.$message({
                     showClose: true,
@@ -117,7 +117,7 @@
                 fd.append("files ", e.target.files[0]);
 
                 try {
-                    let {data} = await api.upload(fd);
+                    let data:any = await api.upload(fd);
                     console.log(data)
                     this.$message.success(`上传成功！`)
                 } catch (e) {

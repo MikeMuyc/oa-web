@@ -46,7 +46,7 @@
 
     @Component({components: {NavSider}})
     export default class appMain extends Vue {
-        routeName: string = this.$route.name;
+        routeName: any = this.$route.name;
 
         @Watch("$route")
         private handleRouteChange(): void {
