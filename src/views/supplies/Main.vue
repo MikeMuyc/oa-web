@@ -16,7 +16,7 @@
               <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
               新增出库
           </div>
-          
+
         </div>
     </div>
 
@@ -67,7 +67,7 @@
                         min-width="126px"
                 >
                 </el-table-column>
-                
+
                <el-table-column
                     label="操作"
                     align="center"
@@ -99,7 +99,7 @@
         model1: string = '';
         supplyName = '';
         supplyList = [];
-        
+
         orderState: string = '';
         formHeight: number =600
         pages: any = {
@@ -169,7 +169,7 @@
             })
             this.getSuppliesByName();
         }
-        
+
 
 
 
