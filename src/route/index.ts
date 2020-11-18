@@ -6,6 +6,7 @@ import management from './management';
 import supplies from './supplies';
 import authox from './authox';
 import {component} from 'vue/types/umd';
+
 Vue.use(Router);
 export default new Router({
     routes: [
@@ -23,7 +24,7 @@ export default new Router({
                     path: 'AppMain',
                     redirect: 'AppMain/workplaceIndex',
                     component: () => import('@oa/views/layout/components/AppMain.vue'),
-                    children:[
+                    children: [
                         {
                             path: 'workplaceIndex',
                             name: 'OA工作台',
@@ -60,7 +61,7 @@ export default new Router({
                 {
                     path: 'AddMain',
                     component: () => import('@oa/views/layout/components/noSlide_Main.vue'),
-                    children:[
+                    children: [
                         {
                             name: '新建公告',
                             path: 'addNotice',
@@ -109,10 +110,6 @@ export default new Router({
 
                             component: () => import('@oa/views/supplies/PushIn.vue')
                         },
-                    ]
-                },
-
-
                     ]
                 },
             ]
