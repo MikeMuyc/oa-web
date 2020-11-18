@@ -4,6 +4,7 @@ import document from './document';
 import addressbook from './addressbook';
 import management from './management';
 import supplies from './supplies';
+import authox from './authox';
 import { component } from 'vue/types/umd';
 Vue.use(Router);
 export default new Router({
@@ -51,7 +52,8 @@ export default new Router({
                         ...addressbook,
                         ...document,
                         ...management,
-                        ...supplies
+                        ...supplies,
+                        ...authox
 
                     ]
                 },
@@ -83,8 +85,6 @@ export default new Router({
 
                             component: () => import('@oa/views/document/addDocument.vue'),
                         },
-                    ]
-                },
                         {
                             name: '新增出库',
                             path: 'pushOut',
@@ -97,6 +97,9 @@ export default new Router({
 
                             component: () => import('@oa/views/supplies/PushIn.vue')
                         },
+                    ]
+                },
+                        
 
                     ]
                 },

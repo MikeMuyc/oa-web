@@ -48,21 +48,21 @@
                 >
                 </el-table-column>
                  <el-table-column
-                        prop="username"
+                        prop="specification"
                         label="规格"
                         width="220px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                  <el-table-column
-                        prop="role"
+                        prop="unit"
                         label="单位"
                         min-width="250px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="department"
+                        prop="amount"
                         label="在库数量"
                         min-width="126px"
                 >
@@ -86,8 +86,6 @@
                 />
             </div>
         </div>
-
-
   </div>
 </template>
 
@@ -100,7 +98,8 @@
         no: boolean = false;
         model1: string = '';
         supplyName = '';
-        supplyList = []
+        supplyList = [];
+        
         orderState: string = '';
         formHeight: number =600
         pages: any = {
@@ -108,18 +107,7 @@
             pageNum: 1,
             totalElements:0
         }
-        tableData:Array<object> = [
-          {
-            name:'张原',
-            username:'zhang',
-            role:'管理员',
-            telephone:'1234567',
-            cellphone:'123456787',
-            department:'应用二部',
-            position:'engineer instructors',
-            workplace:'xxx',
-          }
-        ]
+        tableData:any = []
         orderList:Array<object>=[];
         orderStateList: any = [
             {
@@ -155,12 +143,11 @@
                 pageNum:this.pages.pageNum
             }
             try {
-                const res = supplyApi.getSupplies(params);
-                // const url = 
+                const res =await supplyApi.getSupplies(params);
+                this.tableData = res.data.content
+                console.log(res)
                 // debugger
-                // const res = this.$http('/oa/upplies/page',{params})
-                console.log(111)
-                
+                // const res =await this.$http('/api/oa/upplies/page',{params});
             } catch (error) {
                 console.log(error)
                 this.supplyList = [];
@@ -180,6 +167,7 @@
             this.$nextTick(()=>{
                 this.setPageSize();
             })
+            this.getSuppliesByName();
         }
         
 

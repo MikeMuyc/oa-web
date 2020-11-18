@@ -1,0 +1,44 @@
+{
+  "_from": "@suc/authox@^1.0.6",
+  "_id": "@suc/authox@1.0.7",
+  "_inBundle": false,
+  "_integrity": "sha1-jk2tcFNCiWuPjAXxueLIybyZ390=",
+  "_location": "/@suc/authox",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@suc/authox@^1.0.6",
+    "name": "@suc/authox",
+    "escapedName": "@suc%2fauthox",
+    "scope": "@suc",
+    "rawSpec": "^1.0.6",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.6"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://172.18.66.66:31468/@suc/authox/download/@suc/authox-1.0.7.tgz",
+  "_shasum": "8e4dad705342896b8f8c05f1b9e2c8c9bc99dfdd",
+  "_spec": "@suc/authox@^1.0.6",
+  "_where": "G:\\dupanpan\\oa-web1\\oa-web",
+  "author": "",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "",
+  "license": "ISC",
+  "main": "authox.vue",
+  "name": "@suc/authox",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://cowork.sucsoft.com:3443/web/authox.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.7"
+}

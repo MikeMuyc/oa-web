@@ -44,7 +44,7 @@
                     <span class="iconfont iconxitongguanli" style="font-size:20px;margin-right:10px"></span>
                     系统管理
                 </template>
-                <MenuItem name="权限管理" :to="{name:'权限管理'}">权限管理</MenuItem>
+                <MenuItem name="权限管理" to="/main/AppMain/authox">权限管理</MenuItem>
                 <MenuItem name="用户管理" :to="{name:'用户管理'}">用户管理</MenuItem>
                 <MenuItem name="流程管理" :to="{name:'流程管理'}">流程管理</MenuItem>
             </Submenu>

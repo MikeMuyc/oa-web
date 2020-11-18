@@ -16,7 +16,11 @@ export default class NavBread extends Vue {
 
     @Watch("$route")
     private handleRouteChange(): void {
-        this.title = this.$route.name;
+        if(this.$route.name){
+            this.title = this.$route.name;
+        }else{
+             this.title = this.$route.meta.name;
+        }
     }
 
     mounted(){
