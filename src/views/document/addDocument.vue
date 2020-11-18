@@ -38,14 +38,14 @@
                         <div class="cell" style="flex: 2"></div>
                         <div class="cell" style="flex: 1;justify-content: center">
                             <label for="upload1" class="fontBtn">上传</label>
-                            <input type="file" id="upload1" @change="uploadFile1">
+                            <input type="file" id="upload1" @change="uploadFile1"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="label">附件</div>
                 <label for="upload2" class="pmbtn change" >上传</label>
-                <input type="file" id="upload2" @change="uploadFile2">
+                <input type="file" id="upload2" @change="uploadFile2"/>
             </div>
         </div>
 

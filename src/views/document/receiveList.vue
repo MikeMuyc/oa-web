@@ -149,9 +149,9 @@
                 obj.received = true;
             }
             try {
-                let {data:{content,numberOfElements}} = await api.getDocumentList(obj);
+                let {data:{content,totalElements}} = await api.getDocumentList(obj);
                 this.documentList = content;
-                this.totalElements = numberOfElements;
+                this.totalElements = totalElements;
             }
             catch (e) {
 

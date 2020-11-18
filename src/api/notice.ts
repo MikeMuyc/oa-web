@@ -1,14 +1,18 @@
 import {axios,uploadFile} from './app';
 
-//获取公文列表
+//获取公告列表
 export function getNoticeList(obj:{
     pageSize:number,
     pageNum:number,
-    keyword?:string
+    keyword?:string,
+    read?:any,
 }) {
     return axios.get(`/api/oa/notice/page`,obj).then(resp => resp.data);
 }
-//公文上传  catalog:officialDocument
+//公告附件上传  catalog:officialDocument
 export function upload(obj:any) {
-    uploadFile(`officialDocument`,obj)
+    uploadFile(`notice`,obj)
+}
+export function setRead(ids:Array<any>) {
+    return axios.put(`/api/oa/notice/changeIntoReadStatus`,ids).then(resp => resp.data);
 }
