@@ -170,7 +170,8 @@
         position: relative;
         .createdInput{
             width: 100%;
-            height: 32px;
+            min-height: 32px;
+            height: 100%;
             border-radius: 4px;
             border: solid 1px #dde4eb;
             padding: 0 10px;

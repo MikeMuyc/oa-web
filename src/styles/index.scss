@@ -345,6 +345,19 @@ $value in $flex-ai {
             .input{
                 width: 100%;
                 margin-bottom: 32px;
+                height: 40px;
+                line-height: 40px;
+            }
+            .inputBox{
+                width: 100%;
+                margin-bottom: 32px;
+                height: 40px;
+                line-height: 40px;
+                display: flex;
+                align-items: center;
+                padding: 12px;
+                border: 1px solid $border-color;
+                border-radius: 2px;
             }
             .info{
                 margin-bottom: 32px;

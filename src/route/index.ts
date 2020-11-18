@@ -5,7 +5,7 @@ import addressbook from './addressbook';
 import management from './management';
 import supplies from './supplies';
 import authox from './authox';
-import { component } from 'vue/types/umd';
+import {component} from 'vue/types/umd';
 Vue.use(Router);
 export default new Router({
     routes: [
@@ -86,6 +86,18 @@ export default new Router({
                             component: () => import('@oa/views/document/addDocument.vue'),
                         },
                         {
+                            name: '收文详情',
+                            path: 'receiveDetail',
+
+                            component: () => import('@oa/views/document/receiveDetail.vue'),
+                        },
+                        {
+                            name: '发文详情',
+                            path: 'sentDetail',
+
+                            component: () => import('@oa/views/document/sentDetail.vue'),
+                        },
+                        {
                             name: '新增出库',
                             path: 'pushOut',
 
@@ -99,10 +111,12 @@ export default new Router({
                         },
                     ]
                 },
-                        
+
 
                     ]
                 },
+            ]
+        },
 
         {
             path: '/*',

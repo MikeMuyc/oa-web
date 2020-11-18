@@ -114,7 +114,7 @@
                     <div class="item">
                         <normalInput v-model="name" placeholder="请输入姓名"></normalInput>
                     </div>
-                    <div class="item btn" @click="conso(`name`)">
+                    <div class="item btn" >
                         默认，type="text",字符串
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                     <div class="item">
                         <normalInput type="number" v-model="valNumber" placeholder="请输入正整数"></normalInput>
                     </div>
-                    <div class="item btn" @click="conso(`valNumber`)">
+                    <div class="item btn" >
                         正整数，type="number", 大于等于0的整数
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     <div class="item">
                         <normalInput type="float" v-model="valFloat" placeholder="请输入正数"></normalInput>
                     </div>
-                    <div class="item btn" @click="conso(`valFloat`)">
+                    <div class="item btn" >
                         正数，type="float", 大于等于0的数
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                     <div class="item">
                         <normalInput type="allNumber" v-model="valAllNumber" placeholder="请输入整数"></normalInput>
                     </div>
-                    <div class="item btn" @click="conso(`valAllNumber`)">
+                    <div class="item btn" >
                         所有整数，type="allNumber"
                     </div>
                 </div>
@@ -759,9 +759,7 @@
             console.log(item)
         }
 
-        conso(valName: any) {
-            console.log(this[valName], typeof this[valName])
-        }
+
 
         projectSearch(val: any) {
             console.log(val)

@@ -75,7 +75,7 @@
                         width="150px"
                 >
                     <template slot-scope="{row,$index}">
-                        <font class="fontBtn">查看</font>
+                        <font class="fontBtn" @click="toDetail(row)">查看</font>
                     </template>
                 </el-table-column>
             </el-table>
@@ -149,9 +149,9 @@
                 obj.received = true;
             }
             try {
-                let {data:{content,numberOfElements}} = await api.getDocumentList(obj);
+                let {data:{content,totalElements}} = await api.getDocumentList(obj);
                 this.documentList = content;
-                this.totalElements = numberOfElements;
+                this.totalElements = totalElements;
             }
             catch (e) {
 
@@ -165,6 +165,9 @@
         typeChange(num:number){
             this.type = num;
             this.getPage();
+        }
+        toDetail(row:any){
+            this.$router.push({name:'收文详情',params:row})
         }
     }
 
