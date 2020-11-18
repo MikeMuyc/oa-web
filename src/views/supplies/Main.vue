@@ -1,26 +1,26 @@
 <template>
-  <div class="user" ref="user">
-    <div class="d-flex jc-between searchBar" style="margin:20px 32px;"  ref="searchBar">
-          <div class="d-flex ai-center">
-              <normalInput v-model="supplyName" placeholder="请输入办公用品名称"></normalInput>
-              <div class="pmbtn primary" style="margin-left:10px" @click="getSuppliesByName">
-                  <i class="iconfont iconsousuo"></i>查询
-              </div>
-          </div>
-          <div>
-           <div class="pmbtn primary"  @click="$router.push({name:'新增入库'})">
-              <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
-              新增入库
-          </div>
-          <div class="pmbtn primary" style="margin-left:10px" @click="$router.push({name:'新增出库'})">
-              <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
-              新增出库
-          </div>
+    <div class="user" ref="user">
+        <div class="d-flex jc-between searchBar" style="margin:20px 32px;" ref="searchBar">
+            <div class="d-flex ai-center">
+                <normalInput v-model="supplyName" placeholder="请输入办公用品名称"></normalInput>
+                <div class="pmbtn primary" style="margin-left:10px" @click="getSuppliesByName">
+                    <i class="iconfont iconsousuo"></i>查询
+                </div>
+            </div>
+            <div>
+                <div class="pmbtn primary" @click="$router.push({name:'新增入库'})">
+                    <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
+                    新增入库
+                </div>
+                <div class="pmbtn primary" style="margin-left:10px" @click="$router.push({name:'新增出库'})">
+                    <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
+                    新增出库
+                </div>
 
+            </div>
         </div>
-    </div>
 
-    <!-- table -->
+        <!-- table -->
         <div class="item">
             <el-table
                     :data="tableData"
@@ -34,12 +34,12 @@
                     暂无内容
                 </template>
                 <el-table-column
-                    type="selection"
-                    label=""
-                    width="150px"
-                    align="center"
-            >
-            </el-table-column>
+                        type="selection"
+                        label=""
+                        width="150px"
+                        align="center"
+                >
+                </el-table-column>
                 <el-table-column
                         prop="name"
                         label="办公用品名称"
@@ -47,14 +47,14 @@
                         show-overflow-tooltip
                 >
                 </el-table-column>
-                 <el-table-column
+                <el-table-column
                         prop="specification"
                         label="规格"
                         width="220px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
-                 <el-table-column
+                <el-table-column
                         prop="unit"
                         label="单位"
                         min-width="250px"
@@ -68,30 +68,30 @@
                 >
                 </el-table-column>
 
-               <el-table-column
-                    label="操作"
-                    align="center"
-                    min-width="200px"
-            >
-                <template slot-scope="{row,$index}">
-                    <font class="fontBtn">出库</font>
-                    <font class="fontBtn">入库</font>
-                </template>
-            </el-table-column>
+                <el-table-column
+                        label="操作"
+                        align="center"
+                        min-width="200px"
+                >
+                    <template slot-scope="{row,$index}">
+                        <font class="fontBtn">出库</font>
+                        <font class="fontBtn">入库</font>
+                    </template>
+                </el-table-column>
             </el-table>
-            <div class="pageBottom" ref="pageBottom" >
+            <div class="pageBottom" ref="pageBottom">
                 <Page show-elevator show-total :page-size="pages.pageSize" :current="pages.pageNum"
                       :total="pages.totalElements"
                       @on-change="getPage"
                 />
             </div>
         </div>
-  </div>
+    </div>
 </template>
 
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator";
-    import { supplyApi } from '@oa/api'
+    import {supplyApi} from '@oa/api'
 
     @Component({})
     export default class workplaceMain extends Vue {
@@ -101,14 +101,14 @@
         supplyList = [];
 
         orderState: string = '';
-        formHeight: number =600
+        formHeight: number = 600
         pages: any = {
             pageSize: 10,
             pageNum: 1,
-            totalElements:0
+            totalElements: 0
         }
-        tableData:any = []
-        orderList:Array<object>=[];
+        tableData: any = []
+        orderList: Array<object> = [];
         orderStateList: any = [
             {
                 id: '',
@@ -127,7 +127,7 @@
                 name: '待维修',
             }]
 
-        orderStateSearch(item:any) {
+        orderStateSearch(item: any) {
             console.log(item)
         }
 
@@ -135,15 +135,15 @@
 
         }
 
-      async  getSuppliesByName(){
+        async getSuppliesByName() {
 
             const params = {
-                name:this.supplyName,
-                pageSize:this.pages.pageSize,
-                pageNum:this.pages.pageNum
+                name: this.supplyName,
+                pageSize: this.pages.pageSize,
+                pageNum: this.pages.pageNum
             }
             try {
-                const res =await supplyApi.getSupplies(params);
+                const res = await supplyApi.getSupplies(params);
                 this.tableData = res.data.content
                 console.log(res)
                 // debugger
@@ -154,27 +154,30 @@
             }
         }
 
-        setPageSize(){
+        setPageSize() {
             let refs: any = this.$refs;
             let maxHeight = refs.user.clientHeight;
             let searchBarHight = refs.searchBar.clientHeight + 40;  // 40px 上下margin
             let pageBottomHight = refs.pageBottom.clientHeight;
-            this.formHeight =  maxHeight - searchBarHight - pageBottomHight ;
+            this.formHeight = maxHeight - searchBarHight - pageBottomHight;
             this.pages.pageSize = Math.floor((this.formHeight - 49) / 48);  //表头高度49px，每一行高度48px;
         }
 
-         mounted(): void {
-            this.$nextTick(()=>{
+        mounted(): void {
+            this.$nextTick(() => {
                 this.setPageSize();
+                this.getSuppliesByName();
             })
-            this.getSuppliesByName();
+
         }
-
-
-
 
 
     }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    .user{
+        height: 100%;
+        overflow: hidden;
+    }
+</style>

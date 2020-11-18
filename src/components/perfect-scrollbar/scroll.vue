@@ -20,7 +20,7 @@
     import scroll from 'perfect-scrollbar';
     import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
-    var scrollBar = null;
+    let scrollBar = null;
 
     export default {
         name: 'vue-perfect-scrollbar',

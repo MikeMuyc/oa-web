@@ -6,7 +6,7 @@ import store from './stores'
 
 import './utils/class-component-hooks'
 import plugin from "./utils/suc-plugin";
-
+Vue.use(plugin);
 
 import { utils } from "@suc/ui/index";
 
@@ -39,7 +39,7 @@ Vue.use(authox, store);
 
 Vue.use(VueOl);
 
-Vue.use(plugin);
+
 
 
 if (process.env.NODE_ENV === "development") {

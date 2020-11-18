@@ -85,10 +85,10 @@
         watch:{
             arr:function () {
                 if(this.arr.length>this.maxViewItem){
-                    this.theight = 36*this.maxViewItem + `px`;
+                    this.theight = 32*this.maxViewItem + `px`;
                 }
                 else{
-                    this.theight = 36*this.arr.length + `px`;
+                    this.theight = 32*this.arr.length + `px`;
                 }
                 setTimeout(()=>{
                     this.leftVal = this.$refs.tSelect.clientWidth + 5 + `px`;
@@ -156,7 +156,11 @@
                     @include base-background();
                     color:#fff;
                 }
-
+                .rowIcon{
+                    >.iconfont{
+                        color:#fff;
+                    }
+                }
             }
             .tLabel{
                 padding: 10px 30px 10px 10px;

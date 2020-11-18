@@ -215,6 +215,7 @@
                                 placeholder="所属项目"
                                 :multiple="true"
                                 @sentItem="getmultiple"
+                                style="width: 100%"
                         >
                         </mixSelect>
                     </div>

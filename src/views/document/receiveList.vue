@@ -86,8 +86,6 @@
                   :total="totalElements"
                   @on-change="getPage"/>
         </div>
-
-
     </div>
 </template>
 <script lang="ts">
