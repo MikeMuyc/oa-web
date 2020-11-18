@@ -75,7 +75,7 @@
                         width="150px"
                 >
                     <template slot-scope="{row,$index}">
-                        <font class="fontBtn">查看</font>
+                        <font class="fontBtn" @click="toDetail(row)">查看</font>
                     </template>
                 </el-table-column>
             </el-table>
@@ -165,6 +165,9 @@
         typeChange(num:number){
             this.type = num;
             this.getPage();
+        }
+        toDetail(row:any){
+            this.$router.push({name:'收文详情',params:row})
         }
     }
 

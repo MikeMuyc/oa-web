@@ -3,10 +3,11 @@
         <NavSider/>
         <div class="main-content ">
             <NavBread>
-                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '公告列表'" @click="$router.push({name:'新建公告'})">
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '通知公告'"
+                     @click="$router.push({name:'新建公告'})">
                     <i class="iconfont iconxinzeng"></i>新建公告
                 </div>
-                <div slot="rightSide"  v-if="routeName === '通讯录'">
+                <div slot="rightSide" v-if="routeName === '通讯录'">
                     <div class="pmbtn primary" style="margin-right:10px">
                         <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
                         新增人员信息
@@ -16,7 +17,7 @@
                         机构信息更新
                     </div>
                 </div>
-                    <div slot="rightSide"  v-if="routeName === '权限管理'">
+                <div slot="rightSide" v-if="routeName === '权限管理'">
                     <div class="pmbtn primary" style="margin-right:10px">
                         <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
                         创建角色
@@ -26,7 +27,8 @@
                     </div>
                 </div>
 
-                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '发文管理'" @click="$router.push({name:'新建发文'})">
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '发文管理'"
+                     @click="$router.push({name:'新建发文'})">
                     <i class="iconfont iconxinzeng"></i>新建发文
                 </div>
             </NavBread>
@@ -44,14 +46,15 @@
 
     @Component({components: {NavSider}})
     export default class appMain extends Vue {
-        routeName:string = this.$route.name;
+        routeName: string = this.$route.name;
+
         @Watch("$route")
         private handleRouteChange(): void {
             this.routeName = this.$route.name;
         }
     }
 </script>
-<style lang="scss" >
+<style lang="scss">
     .app_main {
         padding-top: 30px;
         width: 100%;
@@ -70,6 +73,7 @@
         .ivu-layout-sider {
             background: none;
         }
+
         .ivu-layout {
             background: none;
         }
@@ -83,12 +87,13 @@
         }
 
 
-        .main-content{
+        .main-content {
             height: 100%;
             width: calc(100% - 200px);
             padding: 0 24px 24px 24px;
         }
-        .routerView{
+
+        .routerView {
             height: calc(100% - 60px);
             background-color: #fff;
         }

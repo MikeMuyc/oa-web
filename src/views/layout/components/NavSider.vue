@@ -83,6 +83,15 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):after{
+        background: none;
+    }
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
+        background: none;
+    }
+    .ivu-menu-submenu .ivu-menu{
+        padding-left: 14px;
+    }
 </style>

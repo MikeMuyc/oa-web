@@ -4,7 +4,8 @@ import document from './document';
 import addressbook from './addressbook';
 import management from './management';
 import supplies from './supplies';
-import { component } from 'vue/types/umd';
+import {component} from 'vue/types/umd';
+
 Vue.use(Router);
 export default new Router({
     routes: [
@@ -22,7 +23,7 @@ export default new Router({
                     path: 'AppMain',
                     redirect: 'AppMain/workplaceIndex',
                     component: () => import('@oa/views/layout/components/AppMain.vue'),
-                    children:[
+                    children: [
                         {
                             path: 'workplaceIndex',
                             name: 'OA工作台',
@@ -58,7 +59,7 @@ export default new Router({
                 {
                     path: 'AddMain',
                     component: () => import('@oa/views/layout/components/noSlide_Main.vue'),
-                    children:[
+                    children: [
                         {
                             name: '新建公告',
                             path: 'addNotice',
@@ -83,8 +84,18 @@ export default new Router({
 
                             component: () => import('@oa/views/document/addDocument.vue'),
                         },
-                    ]
-                },
+                        {
+                            name: '收文详情',
+                            path: 'receiveDetail',
+
+                            component: () => import('@oa/views/document/receiveDetail.vue'),
+                        },
+                        {
+                            name: '发文详情',
+                            path: 'sentDetail',
+
+                            component: () => import('@oa/views/document/sentDetail.vue'),
+                        },
                         {
                             name: '新增出库',
                             path: 'pushOut',
@@ -97,9 +108,10 @@ export default new Router({
 
                             component: () => import('@oa/views/supplies/PushIn.vue')
                         },
-
                     ]
                 },
+            ]
+        },
 
         {
             path: '/*',

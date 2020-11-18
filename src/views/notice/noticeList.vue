@@ -10,7 +10,7 @@
             </div>
         </div>
         <el-table
-                :data="orderList"
+                :data="noticeList"
                 :height="formHeight"
         >
             <template slot="empty" >
@@ -31,10 +31,16 @@
                     min-width="300px"
                     show-overflow-tooltip
             >
+                <template slot-scope="{row,$index}">
+                    <i v-if="row.read" class="iconfont iconyidu1"></i>
+                    <i v-else class="iconfont iconweidu1"></i>
+                    <em v-if="row.read" class="read"> 【{{row.title}}】{{cutDetail(row.detail)}}</em>
+                    <em v-else class="unread"> 【{{row.title}}】{{cutDetail(row.detail)}}</em>
+                </template>
             </el-table-column>
 
             <el-table-column
-                    prop="time"
+                    prop="createTime"
                     label="时间"
                     min-width="170px"
             >
@@ -62,6 +68,7 @@
     import {Vue, Component} from "vue-property-decorator";
     import {Spin, Select, Option, Icon, Page, CheckboxGroup, RadioGroup, Radio, Checkbox} from 'view-design'
 
+    import * as api from '@oa/api/notice'
     @Component({
         components: {
             Icon,
@@ -77,22 +84,9 @@
     })
 
 
-    export default class orderList extends Vue {
+    export default class noticeList extends Vue {
 
-        orderList: any = [
-            {
-                title: '【工作提醒】2020年XX工作内容已经下发，请及时准备完成工作内……',
-                time: '2020-5-3 19:32:32',
-            },
-            {
-                title: '【工作提醒】2020年XX工作内容已经下发，请及时准备完成工作内……',
-                time: '2020-5-3 19:32:32',
-            },
-            {
-                title: '【工作提醒】2020年XX工作内容已经下发，请及时准备完成工作内……',
-                time: '2020-5-3 19:32:32',
-            },
-        ];
+        noticeList: any = [];
 
         formHeight: number = 600;
         pageNum:number = 1
@@ -111,12 +105,30 @@
         mounted(): void {
             this.$nextTick(()=>{
                 this.setPagesize();
+                this.getNoticeList();
             })
         }
 
+        async getNoticeList(){
+
+            try {
+                let {data:{content,numberOfElements}} = await api.getNoticeList({
+                    pageNum:this.pageNum,
+                    pageSize:this.pageSize,
+                });
+                this.noticeList = content;
+                this.totalElements = numberOfElements;
+            }
+            catch (e) {
+
+            }
+        }
         getPage(page?:number) {
             this.pageNum = page || 1;
-            console.log(page)
+            this.getNoticeList();
+        }
+        cutDetail(detail:string){
+            return detail.slice(0,20)
         }
     }
 
@@ -125,6 +137,23 @@
 <style lang="scss" scoped>
     #noticeList{
         height: 100%;
+        .iconweidu1{
+            @include base-color;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        .iconyidu1{
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        .iconyidu1,.read{
+            color: #595959;
+            font-style: normal;
+        }
+        .unread{
+            color:#262626;
+            font-style: normal;
+        }
     }
 </style>
 
