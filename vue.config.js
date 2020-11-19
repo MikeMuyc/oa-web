@@ -14,8 +14,10 @@ function resolve(dir) {
 module.exports = {
     // lintOnSave: true,
     publicPath: "./",
+
     css: {
         loaderOptions: {
+            //将sass变量添加到全局
             sass: {
                 additionalData: '@import "@/styles/variables.scss";'
             }

@@ -31,6 +31,15 @@
                      @click="$router.push({name:'新建发文'})">
                     <i class="iconfont iconxinzeng"></i>新建发文
                 </div>
+
+                <div slot="rightSide"  v-if="routeName === '工作审批'">
+                    <div class="pmbtn primary" @click="$router.push({name:'新建自办件审批'})" style="margin-right: 20px">
+                        <i class="iconfont iconxinzeng"></i>新建自办件审批
+                    </div>
+                    <div class="pmbtn primary" @click="$router.push({name:'新建外部来人审批'})">
+                        <i class="iconfont iconxinzeng"></i>新建外部来人审批
+                    </div>
+                </div>
             </NavBread>
             <vue-perfect-scrollbar class="routerView">
                 <router-view class=""></router-view>
