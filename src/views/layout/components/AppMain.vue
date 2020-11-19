@@ -31,6 +31,13 @@
                      @click="$router.push({name:'新建发文'})">
                     <i class="iconfont iconxinzeng"></i>新建发文
                 </div>
+
+                <div slot="rightSide" class="pmbtn primary" v-if="routeName === '办公用品管理'">
+                    <i class="iconfont iconsousuo"></i>查看入库记录
+                </div>
+
+
+                
             </NavBread>
             <vue-perfect-scrollbar class="routerView">
                 <router-view class=""></router-view>
