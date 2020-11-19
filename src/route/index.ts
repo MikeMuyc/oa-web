@@ -5,6 +5,7 @@ import addressbook from './addressbook';
 import management from './management';
 import supplies from './supplies';
 import authox from './authox';
+import approval from './approval';
 import {component} from 'vue/types/umd';
 
 Vue.use(Router);
@@ -54,8 +55,8 @@ export default new Router({
                         ...document,
                         ...management,
                         ...supplies,
-                        ...authox
-
+                        ...authox,
+                        ...approval,
                     ]
                 },
                 {
@@ -109,6 +110,19 @@ export default new Router({
                             path: 'pushIn',
 
                             component: () => import('@oa/views/supplies/PushIn.vue')
+                        },
+
+                        {
+                            name: '新建外部来文审批',
+                            path: 'addOutsidefApproval',
+
+                            component: () => import('@oa/views/approval/addOutsidefApproval.vue')
+                        },
+                        {
+                            name: '新建自办件审批',
+                            path: 'addSelfApproval',
+
+                            component: () => import('@oa/views/approval/addSelfApproval.vue')
                         },
                     ]
                 },
