@@ -94,8 +94,11 @@ $value in $flex-ai {
     }
 }
 
+.contentbox{
+    height: 100%;
+    overflow: hidden;
+}
 /**element-ui 样式调整**/
-
 .el-table th.is-leaf{
     background-color: #FAFAFA;
 }

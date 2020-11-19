@@ -1,5 +1,5 @@
 <template>
-    <div class="addressbook" ref = 'addressbook'>
+    <div class="addressbook contentbox" ref='addressbook'>
         <div class="d-flex jc-between searchBar" style="margin:20px 32px;"  ref="searchBar">
             <div class="d-flex flex-1 ">
                 <mixSelect
@@ -197,7 +197,7 @@
                 this.setPageSize();
             })
         }
-        
+
 
 
 
@@ -217,7 +217,7 @@
         clear: both;
         visibility: hidden;
     }
-    
+
     .clearfix {
         zoom: 1; /* ie6 */
     }

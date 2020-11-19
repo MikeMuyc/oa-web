@@ -1,5 +1,5 @@
 <template>
-  <div class="user" ref="user">
+  <div class="contentbox" ref="user">
     <div class="d-flex jc-between searchBar" style="margin:20px 32px;"  ref="searchBar">
           <div class="d-flex ai-center">
               <normalInput v-model="inputValue" placeholder="请输入关键字"></normalInput>
@@ -8,7 +8,7 @@
               </div>
           </div>
           <div>
-         
+
           <div class="pmbtn primary" >
               <span class="iconfont iconxinzeng" style="margin-right:5px"></span>
               新增模板
@@ -49,7 +49,7 @@
                         show-overflow-tooltip
                 >
                 </el-table-column>
-                
+
                <el-table-column
                     width="300px"
                     align="center"
@@ -141,7 +141,7 @@
                 this.setPageSize();
             })
         }
-        
+
 
 
 

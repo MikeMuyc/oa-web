@@ -1,7 +1,6 @@
 <template>
-    <div class="user" ref="user">
-        <div
-                class="d-flex jc-between searchBar"
+    <div class="contentbox" ref="user">
+        <div class="d-flex jc-between searchBar"
                 style="margin: 20px 32px"
                 ref="searchBar"
         >
@@ -244,4 +243,6 @@
     }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
