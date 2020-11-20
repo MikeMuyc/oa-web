@@ -4,7 +4,7 @@ declare module 'vue-echarts' {
         autoresize: boolean;
     }
 }
-declare module '@suc/monch' {
+declare module '@oa/monch' {
     import { PluginObject } from 'vue';
     const VueOl: PluginObject<any>;
     export default VueOl;

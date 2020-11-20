@@ -11,10 +11,6 @@ import {component} from 'vue/types/umd';
 Vue.use(Router);
 export default new Router({
     routes: [
-        {
-            path: '/login',
-            component: () => import('@oa/views/Login.vue'),
-        },
 
         { //懒加载
             path: '/main',

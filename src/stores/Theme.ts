@@ -1,5 +1,5 @@
 import { getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
-import { store } from '@suc/ts-sub';
+import store from './index';
 
 @Module({
     store,

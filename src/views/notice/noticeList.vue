@@ -125,12 +125,83 @@
         async getNoticeList(){
             this.loading = true;
             try {
-                let {data:{content,totalElements}} = await api.getNoticeList({
-                    pageNum:this.pageNum,
-                    pageSize:this.pageSize,
-                    read:this.read,
-                    keyword:this.keyword,
-                });
+                let {data:{content,totalElements}} = {
+                    "code": 200,
+                    "message": "success",
+                    "data": {
+                        "content": [{
+                            "id": "5fb2658fad2d27614eeeb501",
+                            "recipientId": "string",
+                            "title": "string",
+                            "detail": "string",
+                            "attachmentId": ["string"],
+                            "createTime": "2020-11-16 19:42:07",
+                            "creatorId": null,
+                            "read": false
+                        }, {
+                            "id": "5fb121e2c2d1c62180351af6",
+                            "recipientId": "1232123",
+                            "title": "你好 杭州！",
+                            "detail": "how are you",
+                            "attachmentId": ["1444433"],
+                            "createTime": "2020-11-15 20:41:06",
+                            "creatorId": null,
+                            "read": true
+                        }, {
+                            "id": "5fb121e2c2d1c62180351af7",
+                            "recipientId": "1221",
+                            "title": "你好 浙江！",
+                            "detail": "我们是浙江",
+                            "attachmentId": ["1335533"],
+                            "createTime": "2020-11-15 20:41:06",
+                            "creatorId": null,
+                            "read": true
+                        }, {
+                            "id": "5fb121d0c2d1c62180351af5",
+                            "recipientId": "1221",
+                            "title": "你好 浙江！",
+                            "detail": "我们是浙江",
+                            "attachmentId": ["1335533"],
+                            "createTime": "2020-11-15 20:40:48",
+                            "creatorId": null,
+                            "read": true
+                        },  {
+                            "id": "5fb120ddc2d1c62180351aef",
+                            "recipientId": "1221",
+                            "title": "你好 浙江！",
+                            "detail": "我们是浙江",
+                            "attachmentId": ["1335533"],
+                            "createTime": "2020-11-15 20:36:45",
+                            "creatorId": null,
+                            "read": false
+                        }],
+                        "pageable": {
+                            "sort": {
+                                "sorted": true,
+                                "unsorted": false,
+                                "empty": false
+                            },
+                            "offset": 0,
+                            "pageNumber": 0,
+                            "pageSize": 11,
+                            "paged": true,
+                            "unpaged": false
+                        },
+                        "last": false,
+                        "totalPages": 3,
+                        "totalElements": 23,
+                        "number": 0,
+                        "size": 11,
+                        "sort": {
+                            "sorted": true,
+                            "unsorted": false,
+                            "empty": false
+                        },
+                        "numberOfElements": 11,
+                        "first": true,
+                        "empty": false
+                    }
+                };
                 this.noticeList = content;
                 this.totalElements = totalElements;
             }

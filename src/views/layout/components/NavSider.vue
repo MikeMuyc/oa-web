@@ -17,10 +17,10 @@
                 <span class="iconfont iconzhoubaoribao" style="font-size:20px;margin-right:10px"></span>
                 <span>日报周报</span>
             </MenuItem>
-            <MenuItem name="任务督办" to="/">
+            <!--<MenuItem name="任务督办" to="/">
                 <span class="iconfont iconrenwuduban" style="font-size:20px;margin-right:10px"></span>
                 <span>任务督办</span>
-            </MenuItem>
+            </MenuItem>-->
 
             <Submenu name="公文收发">
                 <template slot="title">
@@ -44,7 +44,7 @@
                     <span class="iconfont iconxitongguanli" style="font-size:20px;margin-right:10px"></span>
                     系统管理
                 </template>
-                <MenuItem name="权限管理" to="/main/AppMain/authox">权限管理</MenuItem>
+                <!--<MenuItem name="权限管理" to="/main/AppMain/authox">权限管理</MenuItem>-->
                 <MenuItem name="用户管理" :to="{name:'用户管理'}">用户管理</MenuItem>
                 <MenuItem name="流程管理" :to="{name:'流程管理'}">流程管理</MenuItem>
             </Submenu>

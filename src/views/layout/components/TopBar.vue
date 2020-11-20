@@ -15,15 +15,11 @@
 
 <script lang="ts">
     import {Vue, Component, Watch} from "vue-property-decorator";
-    import {SucIcon, SucMenu, SucMenuItem, SucSubmenu} from "@suc/ui";
     import {theme} from "../../../stores/Theme";
 
     @Component({
         components: {
-            SucIcon,
-            SucMenu,
-            SucMenuItem,
-            SucSubmenu,
+
         },
     })
     export default class topBar extends Vue {

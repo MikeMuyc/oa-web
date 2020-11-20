@@ -130,25 +130,8 @@
             totalElements: 0,
         };
         tableData: any = [];
-        orderList: Array<object> = [];
-        orderStateList: any = [
-            {
-                id: "",
-                name: "全部状态",
-            },
-            {
-                id: "0",
-                name: "待审核",
-            },
-            {
-                id: "1",
-                name: "待接单",
-            },
-            {
-                id: "3",
-                name: "待维修",
-            },
-        ];
+
+
 
         orderStateSearch(item: any) {
             console.log(item);
@@ -166,9 +149,137 @@
                 pageNum: this.pages.pageNum,
             };
             try {
-                let {
-                    data: {content, totalElements},
-                } = await supplyApi.getSupplies(params);
+                let {data: {content, totalElements}} = {
+                    "code": 200,
+                    "message": "success",
+                    "data": {
+                        "content": [{
+                            "id": "5fb604cc4ec26010e5c2683a",
+                            "name": "尺子",
+                            "specification": "7",
+                            "unit": "个",
+                            "amount": 7,
+                            "createTime": "2020-11-20T00:00:00",
+                            "updateTime": "2020-11-20T00:00:00",
+                            "del": 0
+                        }, {
+                            "id": "5fb6244b79228254131e00c8",
+                            "name": "橡皮2",
+                            "specification": "string",
+                            "unit": "string",
+                            "amount": 1,
+                            "createTime": "2020-11-19T15:52:19",
+                            "updateTime": "2020-11-19T15:52:19",
+                            "del": 0
+                        }, {
+                            "id": "5fb608391d21f045595ddf72",
+                            "name": "橡皮1",
+                            "specification": "string",
+                            "unit": "string",
+                            "amount": 3,
+                            "createTime": "2020-11-19T15:52:19",
+                            "updateTime": "2020-11-19T15:52:19",
+                            "del": 0
+                        }, {
+                            "id": "5faccec22dbdfe5951ef9d8c",
+                            "name": "橡皮",
+                            "specification": "42",
+                            "unit": "24",
+                            "amount": 90,
+                            "createTime": "2020-11-19T00:00:00",
+                            "updateTime": "2020-11-19T00:00:00",
+                            "del": 0
+                        }, {
+                            "id": "5fb604924ec26010e5c26838",
+                            "name": "铅笔",
+                            "specification": "",
+                            "unit": "",
+                            "amount": 112,
+                            "createTime": "2020-11-19T00:00:00",
+                            "updateTime": "2020-11-19T00:00:00",
+                            "del": 0
+                        }, {
+                            "id": "5faccebb2dbdfe5951ef9d8a",
+                            "name": "尺子",
+                            "specification": "42",
+                            "unit": "24",
+                            "amount": 12,
+                            "createTime": "2020-11-19T00:00:00",
+                            "updateTime": "2020-11-19T00:00:00",
+                            "del": 0
+                        }, {
+                            "id": "5facce622dbdfe5951ef9d86",
+                            "name": "2",
+                            "specification": "42",
+                            "unit": "24",
+                            "amount": 90,
+                            "createTime": "2020-11-19T00:00:00",
+                            "updateTime": "2020-11-19T00:00:00",
+                            "del": 0
+                        }, {
+                            "id": "5fb4c45253c17f05a27e5833",
+                            "name": "string",
+                            "specification": "string",
+                            "unit": "string",
+                            "amount": 1,
+                            "createTime": "2020-11-18T06:50:43.484",
+                            "updateTime": "2020-11-18T06:50:43.484",
+                            "del": 0
+                        }, {
+                            "id": "5fb4c776992e2b30c673ab0f",
+                            "name": "string",
+                            "specification": "string",
+                            "unit": "string",
+                            "amount": 1,
+                            "createTime": "2020-11-18T06:50:31",
+                            "updateTime": "2020-11-18T06:50:31",
+                            "del": 0
+                        }, {
+                            "id": "5fb4c7cd45a2ed350900b75b",
+                            "name": "string",
+                            "specification": "string",
+                            "unit": "string",
+                            "amount": 1,
+                            "createTime": "2020-11-18T06:50:31",
+                            "updateTime": "2020-11-18T06:50:31",
+                            "del": 0
+                        }, {
+                            "id": "5facceab2dbdfe5951ef9d88",
+                            "name": "铅笔",
+                            "specification": "42",
+                            "unit": "24",
+                            "amount": 67,
+                            "createTime": "2020-11-18T00:00:00",
+                            "updateTime": "2020-11-18T00:00:00",
+                            "del": 0
+                        }],
+                        "pageable": {
+                            "sort": {
+                                "sorted": true,
+                                "unsorted": false,
+                                "empty": false
+                            },
+                            "offset": 0,
+                            "pageNumber": 0,
+                            "pageSize": 11,
+                            "paged": true,
+                            "unpaged": false
+                        },
+                        "last": false,
+                        "totalPages": 2,
+                        "totalElements": 20,
+                        "number": 0,
+                        "size": 11,
+                        "sort": {
+                            "sorted": true,
+                            "unsorted": false,
+                            "empty": false
+                        },
+                        "numberOfElements": 11,
+                        "first": true,
+                        "empty": false
+                    }
+                }
                 this.tableData = content;
                 this.pages.totalElements = totalElements;
             } catch (error) {
