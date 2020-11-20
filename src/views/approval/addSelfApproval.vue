@@ -49,6 +49,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="label">附件</div>
+                <div class="pmbtn change" style="margin-bottom: 32px">上传</div>
+
+                <div class="label">审批流程</div>
+                <div class="loopbox">
+                    <div class="loopline">
+                        <div class="left"></div>
+                        <div class="right">
+
+                        </div>
+                    </div>
+
+                </div>
             </vue-perfect-scrollbar>
         </div>
 
@@ -91,6 +105,7 @@
         border: 1px solid #D8DEE5;
         border-radius: 2px;
         padding: 20px;
+        margin-bottom: 32px;
     }
     .oaline {
         width: 100%;
@@ -143,6 +158,25 @@
                 }
             }
         }
+    }
+
+    .loopbox{
+        display: flex;
+        margin-bottom: 32px;
+        .loopline{
+            display: flex;
+            .left{
+                width: 40px;
+            }
+            .right{
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+
+            }
+        }
+
+
     }
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-    <div id="addOutsidefApproval" class="addModule">
+    <div id="addOutsideApproval" class="addModule">
         <div class="content">
             <div class="backLine">
                 <div class="left" @click="$router.go(-1)">
@@ -16,38 +16,50 @@
             </div>
             <vue-perfect-scrollbar class="whiteSpace">
                 <div class="title">新建外部来文审批</div>
-                <div class="label">文件名称</div>
-                <normalInput class="input" placeholder="请输入文件名称"></normalInput>
-
                 <div class="label">关联审批</div>
                 <normalInput class="input" placeholder="请选择关联审批文件"></normalInput>
 
-                <div class="label">文件详情</div>
-                <div class="graybox">
-                    <div class="oaline">
-                        <div class="oalabel">抬头</div>
-                        <div class="flex">
-                            <normalInput placeholder="请输入抬头" style="width: 300px"></normalInput>
-                        </div>
+                <div class="label">公文标题</div>
+                <normalInput class="input" placeholder="请输入公文标题"></normalInput>
+
+                <div class="threeflex">
+                    <div class="item">
+                        <div class="label">正文文件名称</div>
+                        <normalInput class="input" placeholder="请输入正文文件名称"></normalInput>
                     </div>
-                    <div class="oaline">
-                        <div class="oalabel">文件正文</div>
-                        <div class="flex">
-                            <textarea style="height: 100px;width: 100%" placeholder="请输入文件正文"></textarea>
-                        </div>
+                    <div class="item">
+                        <div class="label">发文字号</div>
+                        <normalInput class="input" placeholder="请输入发文字号"></normalInput>
                     </div>
-                    <div class="oaline">
-                        <div class="oalabel">落款</div>
-                        <div class="flex">
-                            <normalInput placeholder="请输入落款" style="width: 300px"></normalInput>
-                        </div>
+                    <div class="item">
+                        <div class="label">来文单位</div>
+                        <normalInput class="input" placeholder="请输入来文单位"></normalInput>
                     </div>
-                    <div class="oaline">
-                        <div class="oalabel">日期</div>
-                        <div class="flex">
-                            <DatePicker v-model="time1" type="date" placeholder="选择日报所属日期" style="width: 300px"></DatePicker>
-                        </div>
+                </div>
+                <div class="threeflex">
+                    <div class="item">
+                        <div class="label">正文文件</div>
+                        <div class="pmbtn change" style="margin-bottom: 32px">上传</div>
+
                     </div>
+                    <div class="item">
+                        <div class="label">附件</div>
+                        <div class="pmbtn change" style="margin-bottom: 32px">上传</div>
+
+                    </div>
+                </div>
+
+                <div class="label">分文</div>
+                <div class="threeflex">
+                    <RadioGroup >
+                        <Radio label="办公">
+                            <span>办公</span>
+                        </Radio>
+                        <Radio label="阅文">
+
+                            <span>阅文</span>
+                        </Radio>
+                    </RadioGroup>
                 </div>
             </vue-perfect-scrollbar>
         </div>
@@ -74,7 +86,7 @@
     })
 
 
-    export default class addOutsidefApproval extends Vue {
+    export default class addOutsideApproval extends Vue {
 
 
 
@@ -145,6 +157,14 @@
                     color: $error-color;
                 }
             }
+        }
+    }
+
+    .threeflex{
+        display: flex;
+        justify-content: space-between;
+        .item{
+            width: 270px;
         }
     }
 </style>

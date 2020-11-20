@@ -60,6 +60,9 @@ textarea{
         background-color: #f8f9fc;
     }
 }
+input::placeholder,textarea::placeholder{
+    color: #a8a8a8!important;
+}
 input[type=text],input[type="number"]{
     outline: none;
     padding: 0 10px;

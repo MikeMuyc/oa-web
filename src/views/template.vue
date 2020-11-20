@@ -431,11 +431,9 @@
             <div class="right">
                 <div class="aline">
                     <div class="item">
-
+                        <DatePicker v-model="time1" type="date" placeholder="选择日期" style="width: 300px"></DatePicker>
                     </div>
-                    <div class="item">
-
-                    </div>
+                    <div class="item">使用 iview 时间选择组件</div>
                 </div>
 
             </div>

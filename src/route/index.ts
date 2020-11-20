@@ -116,7 +116,7 @@ export default new Router({
                             name: '新建外部来文审批',
                             path: 'addOutsidefApproval',
 
-                            component: () => import('@oa/views/approval/addOutsidefApproval.vue')
+                            component: () => import('@oa/views/approval/addOutsideApproval.vue')
                         },
                         {
                             name: '新建自办件审批',
