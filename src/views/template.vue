@@ -177,7 +177,7 @@
             </div>
             <div class="right">
                 <div class="aline">
-                    <div class="item">
+                    <div class="item" style="width: 400px">
                         <mixSelect
                                 v-model="estateId"
                                 :selectList="SceneList"
@@ -185,7 +185,9 @@
                                 valueName="val"
                                 childrenName="children"
                                 placeholder="所属项目"
+                                withParentName
                                 @sentTo="projectSearch"
+                                style="width: 100%"
                         >
                         </mixSelect>
                     </div>
@@ -197,6 +199,7 @@
                                 valueName="id"
                                 placeholder="工单状态"
                                 @sentItem="orderStateSearch"
+                                style="width: 140px"
                         >
                         </mixSelect>
                     </div>
@@ -213,7 +216,9 @@
                                 valueName="val"
                                 childrenName="children"
                                 placeholder="所属项目"
-                                :multiple="true"
+                                multiple
+                                withParentName
+                                checkStrictly
                                 @sentItem="getmultiple"
                                 style="width: 100%"
                         >
@@ -418,7 +423,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="square">
@@ -444,7 +448,6 @@
                 :visible.sync="dialogVisible"
                 custom-class="emDialog"
                 width="530px"
-
         >
             <div class="title" slot="title">
                 <div class="iconColumn"></div>
@@ -496,7 +499,7 @@
     })
 
 
-    export default class orderList extends Vue {
+    export default class template extends Vue {
         time1:any = '';
         name: any = '';
         valNumber: any = '';
@@ -611,12 +614,20 @@
                     },
                 ]
 
-            }
+            },
+            {
+                name: "三元重工",
+                val: `3`,
+            },
         ];
         SceneList2: any = [
-
+            {
+                name: "三元重工",
+                val: `3`,
+            },
             {
                 name: "工程管理类",
+                val: `2`,
                 children: [
 
                     {
@@ -667,6 +678,7 @@
             },
             {
                 name: "管理类项目",
+                val: `1`,
                 children: [
 
                     {

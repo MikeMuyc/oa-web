@@ -1,25 +1,37 @@
 <template>
-    <div class="tSelect" ref="tSelect" >
-        <vue-perfect-scrollbar ref="tScroll" :style="{height:theight}" :settings="{wheelPropagation:false,minScrollbarLength:18}">
+    <div class="tSelect" ref="tSelect">
+        <vue-perfect-scrollbar ref="tScroll" :style="{height:theight}"
+                               :settings="{wheelPropagation:false,minScrollbarLength:18}">
             <div class="tLine" :class="{hover:hoverIndex === index}" v-for="(item,index) in arr" :key="item[valueName]">
-                <div v-if="item[labelName]" class="tLabel" :class="{checked:isChecked(item)}" @mouseenter="mouseEnter(index,item)" @click="sentVal(item)">
+                <div class="tLabel" :class="{checked:isChecked(item)}"
+                     @mouseenter="mouseEnter(index,item)" @click="sentVal(item)">
                     {{item[labelName] || item}}
+                    <i v-if="isChecked(item)" class="iconfont iconcheck"></i>
                 </div>
-                <div v-else class="tLabel" :class="{checked:isChecked(item)}" @mouseenter="mouseEnter(index,item)" @click="sentVal2(item)">
-                    {{item}}
-                </div>
-                <div class="rowIcon" v-if="item[childrenName] && item[childrenName].length>0">
-                    <slot name="rowIcon">
+
+                <div class="rowIcon" >
+
+                    <slot name="rowIcon" v-if="item[childrenName] && item[childrenName].length>0">
                         <i class="iconfont" :class="rowIconName"></i>
                     </slot>
-                </div>
-                <div class="rowIcon" v-if="isChecked(item)">
-                    <i class="iconfont iconcheck" ></i>
                 </div>
             </div>
         </vue-perfect-scrollbar>
         <transition name="tfade">
-            <tSelect v-if="Titem[childrenName] && Titem[childrenName].length>0 && hoverIndex === Tindex" v-show="hoverIndex === Tindex" :arr="Titem[childrenName]" :style="{left:leftVal,top:topVal}" :labelName="labelName" :valueName="valueName" :childrenName="childrenName" :busName="busName" :rowIconName="rowIconName" :multiple="multiple" :checkedList="checkedList">
+            <tSelect v-if="Titem[childrenName] && Titem[childrenName].length>0 && hoverIndex === Tindex"
+                     v-show="hoverIndex === Tindex"
+                     :arr="Titem[childrenName]"
+                     :style="{left:leftVal,top:topVal}"
+                     :labelName="labelName"
+                     :valueName="valueName"
+                     :childrenName="childrenName"
+                     :busName="busName"
+                     :rowIconName="rowIconName"
+                     :multiple="multiple"
+                     :checkedList="checkedList"
+                     :parentName="parentNameTo"
+                     :checkStrictly="checkStrictly"
+            >
                 <slot name="rowIcon" slot="rowIcon"></slot>
             </tSelect>
         </transition>
@@ -29,107 +41,131 @@
 
 <script>
     import bus from './eventBus'
+
     export default {
         name: "tSelect",
-        props:{
-            arr:{
+        props: {
+            arr: {
                 required: true,
-                type:Array,
-                default:function () {
+                type: Array,
+                default: function () {
                     return []
                 },
             },
-            labelName:{
-                type:String,
-                default:`name`,
+            labelName: {
+                type: String,
+                default: `name`,
             },
-            valueName:{
-                type:String,
-                default:`value`,
+            valueName: {
+                type: String,
+                default: `value`,
             },
-            childrenName:{
-                type:String,
-                default:`children`,
+            childrenName: {
+                type: String,
+                default: `children`,
             },
-            maxViewItem:{
-                type:Number,
-                default:6,
+            maxViewItem: {
+                type: Number,
+                default: 6,
             },
-            busName:{
-                type:String,
+            busName: {
+                type: String,
             },
-            rowIconName:{
-                type:String,
-                default:'iconjiantou1',
+            rowIconName: {
+                type: String,
+                default: 'iconjiantou1',
             },
-            multiple:{
+            multiple: {
+                type: Boolean,
+                default: false,
+            },
+            checkedList: {
+                type: Array,
+                default: [],
+            },
+            parentName: {
+                type: String,
+                default: '',
+            },
+            //是否可选任意节点。默认只能选最底层节点
+            checkStrictly:{
                 type:Boolean,
                 default:false,
-            },
-            checkedList:{
-                type:Array,
-                default:[],
             },
         },
 
         data() {
             return {
-                hoverIndex:-1,
-                leftVal:``,
-                topVal:``,
-                theight:'',
-                Titem:{},
-                Tindex:-1,
+                hoverIndex: -1,
+                leftVal: ``,
+                topVal: ``,
+                itemHeight: 32,
+                theight: '',
+                Titem: {},
+                Tindex: -1,
             }
         },
-        watch:{
-            arr:function () {
-                if(this.arr.length>this.maxViewItem){
-                    this.theight = 32*this.maxViewItem + `px`;
+        computed:{
+            parentNameTo:function(){
+                if(this.parentName){
+                    return `${this.parentName}/${this.Titem[this.labelName]}`
                 }
                 else{
-                    this.theight = 32*this.arr.length + `px`;
+                    return this.Titem[this.labelName]
                 }
-                setTimeout(()=>{
+            }
+
+        },
+        watch: {
+            arr: function () {
+                if (this.arr.length > this.maxViewItem) {
+                    this.theight = this.itemHeight * this.maxViewItem + `px`;
+                } else {
+                    this.theight = this.itemHeight * this.arr.length + `px`;
+                }
+                setTimeout(() => {
                     this.leftVal = this.$refs.tSelect.clientWidth + 5 + `px`;
-                },100)
+                }, 100)
                 this.hoverIndex = -1;
             },
-            hoverIndex:function (val) {
-                this.topVal = val*36 - this.$refs.tScroll.$el.scrollTop + `px`;
+            hoverIndex: function (val) {
+                this.topVal = val * this.itemHeight - this.$refs.tScroll.$el.scrollTop + `px`;
             }
         },
-        mounted(){
-            if(this.arr.length>this.maxViewItem){
-                this.theight = 36*this.maxViewItem + `px`;
+        mounted() {
+            if (this.arr.length > this.maxViewItem) {
+                this.theight = this.itemHeight * this.maxViewItem + `px`;
             }
             this.$nextTick(() => {
                 this.leftVal = this.$refs.tSelect.clientWidth + 5 + `px`
             });
         },
         methods: {
-            mouseEnter(index,item){
+            mouseEnter(index, item) {
                 this.hoverIndex = index;
                 this.Titem = item;
                 this.Tindex = index;
             },
-            sentVal(item){
-                if(item[this.valueName] !== undefined){
-                    if(item[this.childrenName]){
-                        if(item[this.childrenName].length===0){
-                            bus.$emit(`${this.busName}`,item)
+            sentVal(item) {
+                if (item[this.valueName] !== undefined) {
+                    if (item[this.childrenName]) {
+                        if(this.checkStrictly){
+                            item.parentName = this.parentName;
+                            bus.$emit(`${this.busName}`, item)
                         }
-                    }
-                    else{
-                        bus.$emit(`${this.busName}`,item)
+                        else if (item[this.childrenName].length === 0) {
+                            item.parentName = this.parentName;
+                            bus.$emit(`${this.busName}`, item)
+                        }
+                    } else {
+                        item.parentName = this.parentName;
+                        bus.$emit(`${this.busName}`, item)
                     }
                 }
             },
-            sentVal2(item){
-                bus.$emit(`${this.busName}2`,item)
-            },
 
-            isChecked(item){
+
+            isChecked(item) {
                 let isIndex = this.checkedList.findIndex(item1 => item1 === item);
                 return isIndex > -1
             }
@@ -138,8 +174,8 @@
 </script>
 
 <style lang="scss" scoped>
-    $white-color:#fff;
-    $boxHeight:32px;
+    $white-color: #fff;
+    $boxHeight: 32px;
     .tSelect {
         z-index: 99;
         position: absolute;
@@ -149,45 +185,52 @@
         box-shadow: 0px 1px 4px 0px rgba(183, 183, 183, 0.6);
         border-radius: 4px;
         transform-origin: center top 0;
-        .tLine{
+
+        .tLine {
             position: relative;
-            &:hover,&.hover{
-                >.tLabel{
-                    @include base-background();
-                    color:#fff;
-                }
-                .rowIcon{
-                    >.iconfont{
-                        color:#fff;
-                    }
-                }
-            }
-            .tLabel{
+            .tLabel {
                 padding: 10px 30px 10px 10px;
                 height: $boxHeight;
-                display:flex;
+                display: flex;
                 align-items: center;
                 user-select: none;
                 cursor: pointer;
                 white-space: nowrap;
-                &:active{
+
+                &:active {
                     @include base-background-active();
                 }
-                &.checked{
-                    color: #3a7ef3;
+
+                &.checked {
+                    @include base-color();
+                }
+            }
+            &:hover, &.hover {
+                .tLabel {
+                    color: #fff;
+                    &.checked {
+                        color: #fff;;
+                    }
+                    @include base-background();
+                }
+                .rowIcon {
+                    > .iconfont {
+                        color: #fff;
+                    }
                 }
             }
         }
-        .rowIcon{
+
+        .rowIcon {
             position: absolute;
             right: 6px;
             top: 0;
-            width: 16px;
             height: 100%;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            >.iconfont{
+
+            > .iconfont {
                 font-size: 10px;
             }
         }
@@ -206,7 +249,7 @@
         transform: rotateY(0deg);
     }
 
-    .tfade-enter{
+    .tfade-enter {
         opacity: 0;
         transform: rotateY(90deg);
     }
@@ -215,7 +258,16 @@
         opacity: 0;
         transform: rotateY(90deg);
     }
-    .iconcheck{
+
+    .iconcheck {
         @include base-color();
+        font-size: 14px;
+        margin-left: 4px;
+    }
+    .tLine.hover{
+        .iconcheck {
+            color: #ffffff;
+
+        }
     }
 </style>
